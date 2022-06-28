@@ -15,6 +15,7 @@ typedef struct {
 typedef struct {
     aeronave Aviao[MAXTAMFILAS];
     int tamanhoPista;
+    int TempoEspera;
     Apontadores Frente, Tras;
 } Fila; //FILAS PARA AVIAO
 
@@ -38,7 +39,7 @@ void Imprimir(Fila *fila);
 void esperaAterrissar(aeronave *aviaoATERRISSAR, int SORTEIO_ATERRISSAR, Fila *espera_1, Fila *espera_2,
                       Fila *espera_3, Fila *espera_4, int *p_controleAterrisagem);
 
-void aterrissar(Fila *PISTA1, Fila *PISTA2, Fila *filaEspera);
+void aterrissar( Fila *PISTA, Fila *filaEspera);
 
 void emergencia_e_decolar(Fila *PISTA3, Fila *filaEspera);
 

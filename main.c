@@ -9,7 +9,7 @@ int main() {
     srand((unsigned) time(NULL));
 //ID_decolagem é par e
     int SORTEIO_DECOLAR, SORTEIO_ATERRISSAR, ID_decolagem = 0, *p_ID_decolagem = &ID_decolagem,
-            ID_aterrissagem = 1, *p_ID_aterrissagem = &ID_aterrissagem, QTDITERAÇOES;
+            ID_aterrissagem = 1, *p_ID_aterrissagem = &ID_aterrissagem, QTDITERAÇOES, SemReserva = 0;
     int controleAterrissar = 1, *p_controleAterrissar = &controleAterrissar, reserva_zerada = 0;
 
     //VARIAVEIS PARA PISTAS DE ATERRISSAGEM DO AEROPORTO
@@ -62,7 +62,7 @@ int main() {
 
         //inserir um item por vez na fila de desolagem
         if (SORTEIO_DECOLAR != 0) {
-            decolar(&aviaoDECOLAR, SORTEIO_DECOLAR, &fila_DECOLAR);
+            decolar(aviaoDECOLAR, SORTEIO_DECOLAR, &fila_DECOLAR);
 
         } else {
             printf("\n\nNenhum avião decolando\n\n");
@@ -75,7 +75,6 @@ int main() {
 
 
         //parte para retirar os avioes que cairam da fila
-
         if (espera_1.Aviao[espera_1.Frente - 1].quantidadeTempo == 0) {
 
             Desenfileira(&espera_1, &espera_1.Aviao[espera_1.Frente - 1]);
@@ -93,7 +92,8 @@ int main() {
             Desenfileira(&espera_4, &espera_4.Aviao[espera_4.Frente - 1]);
         }
 
-        //parte onde iremos ver qual é o aviao com menor tempo de combustivel
+
+        //parte onde iremos ver qual é o aviao com menor tempo de combustivel e deixar ir aterrissar na pista 1
         if ((Vazia(espera_1) == 0) &&
             ((espera_1.Aviao[espera_1.Frente - 1].quantidadeTempo <
               espera_2.Aviao[espera_2.Frente - 1].quantidadeTempo) &&
@@ -102,7 +102,13 @@ int main() {
              (espera_1.Aviao[espera_1.Frente - 1].quantidadeTempo <
               espera_4.Aviao[espera_4.Frente - 1].quantidadeTempo))) {
 
-            aterrissar(&PISTA1, &PISTA2, &espera_1);
+
+            if (espera_1.Aviao[espera_1.Frente - 1].quantidadeTempo ==
+                1) {//contador de avioes que decolaram sem reserva
+                SemReserva++;
+            }
+
+            aterrissar(&PISTA1, &espera_1);
             *(p_controleAterrissar) = 1; //variavel para controlar crescimento igual das pistas
 
         } else if ((Vazia(espera_2) == 0) &&
@@ -113,9 +119,14 @@ int main() {
                     (espera_2.Aviao[espera_2.Frente - 1].quantidadeTempo <
                      espera_4.Aviao[espera_4.Frente - 1].quantidadeTempo))) {
 
-            aterrissar(&PISTA1, &PISTA2, &espera_2);
-            *(p_controleAterrissar) = 2;
+            if (espera_2.Aviao[espera_2.Frente - 1].quantidadeTempo ==
+                1) {//contador de avioes que decolaram sem reserva
+                SemReserva++;
+            }
 
+
+            aterrissar(&PISTA1, &espera_2);
+            *(p_controleAterrissar) = 2;
 
         } else if ((Vazia(espera_3) == 0) &&
                    (espera_3.Aviao[espera_3.Frente - 1].quantidadeTempo <
@@ -125,7 +136,125 @@ int main() {
                    (espera_3.Aviao[espera_3.Frente - 1].quantidadeTempo <
                     espera_4.Aviao[espera_4.Frente - 1].quantidadeTempo)) {
 
-            aterrissar(&PISTA1, &PISTA2, &espera_3);
+            if (espera_3.Aviao[espera_3.Frente - 1].quantidadeTempo ==
+                1) {//contador de avioes que decolaram sem reserva
+                SemReserva++;
+            }
+
+            aterrissar(&PISTA1, &espera_3);
+            *(p_controleAterrissar) = 3;
+
+        } else if ((Vazia(espera_4) == 0) &&
+                   (espera_4.Aviao[espera_4.Frente - 1].quantidadeTempo <
+                    espera_1.Aviao[espera_1.Frente - 1].quantidadeTempo) &&
+                   (espera_4.Aviao[espera_4.Frente - 1].quantidadeTempo <
+                    espera_2.Aviao[espera_2.Frente - 1].quantidadeTempo) &&
+                   (espera_4.Aviao[espera_4.Frente - 1].quantidadeTempo <
+                    espera_3.Aviao[espera_3.Frente - 1].quantidadeTempo)) {
+
+            if (espera_4.Aviao[espera_4.Frente - 1].quantidadeTempo ==
+                1) {//contador de avioes que decolaram sem reserva
+                SemReserva++;
+            }
+
+            aterrissar(&PISTA1, &espera_4);
+            *(p_controleAterrissar) = 4;
+
+        } else if ((Vazia(espera_4) == 0)) {//se forem todos iguais, adiciona no 1 mesmo
+
+            if (espera_4.Aviao[espera_4.Frente - 1].quantidadeTempo ==
+                1) {//contador de avioes que decolaram sem reserva
+                SemReserva++;
+            }
+
+            aterrissar(&PISTA1, &espera_4);
+            *(p_controleAterrissar) = 4;
+
+
+        } else if ((Vazia(espera_3) == 0)) {//se forem todos iguais, adiciona no 1 mesmo
+
+
+            if (espera_3.Aviao[espera_3.Frente - 1].quantidadeTempo ==
+                1) {//contador de avioes que decolaram sem reserva
+                SemReserva++;
+            }
+
+            aterrissar(&PISTA1, &espera_3);
+            *(p_controleAterrissar) = 3;
+
+        } else if ((Vazia(espera_2) == 0)) {//se forem todos iguais, adiciona no 1 mesmo
+
+
+            if (espera_2.Aviao[espera_2.Frente - 1].quantidadeTempo ==
+                1) {//contador de avioes que decolaram sem reserva
+                SemReserva++;
+            }
+
+            aterrissar(&PISTA1, &espera_2);
+            *(p_controleAterrissar) = 2;
+
+        } else if ((Vazia(espera_1) == 0)) {//se forem todos iguais, adiciona no 1 mesmo
+
+            if (espera_1.Aviao[espera_1.Frente - 1].quantidadeTempo ==
+                1) {//contador de avioes que decolaram sem reserva
+                SemReserva++;
+            }
+
+            aterrissar(&PISTA1, &espera_1);
+            *(p_controleAterrissar) = 1;
+
+        }
+
+        //---------------------------------------PISTA 2
+        //parte onde iremos ver qual é o aviao com menor tempo de combustivel e cdeixar ir aterrissar na pista 2
+        if ((Vazia(espera_1) == 0) &&
+            ((espera_1.Aviao[espera_1.Frente - 1].quantidadeTempo <
+              espera_2.Aviao[espera_2.Frente - 1].quantidadeTempo) &&
+             (espera_1.Aviao[espera_1.Frente - 1].quantidadeTempo <
+              espera_3.Aviao[espera_3.Frente - 1].quantidadeTempo) &&
+             (espera_1.Aviao[espera_1.Frente - 1].quantidadeTempo <
+              espera_4.Aviao[espera_4.Frente - 1].quantidadeTempo))) {
+
+            if (espera_1.Aviao[espera_1.Frente - 1].quantidadeTempo ==
+                1) {//contador de avioes que decolaram sem reserva
+                SemReserva++;
+            }
+
+            aterrissar(&PISTA2, &espera_1);
+            *(p_controleAterrissar) = 1; //variavel para controlar crescimento igual das pistas
+
+
+        } else if ((Vazia(espera_2) == 0) &&
+                   ((espera_2.Aviao[espera_2.Frente - 1].quantidadeTempo <
+                     espera_1.Aviao[espera_1.Frente - 1].quantidadeTempo) &&
+                    (espera_2.Aviao[espera_2.Frente - 1].quantidadeTempo <
+                     espera_3.Aviao[espera_3.Frente - 1].quantidadeTempo) &&
+                    (espera_2.Aviao[espera_2.Frente - 1].quantidadeTempo <
+                     espera_4.Aviao[espera_4.Frente - 1].quantidadeTempo))) {
+
+            if (espera_2.Aviao[espera_2.Frente - 1].quantidadeTempo ==
+                1) {//contador de avioes que decolaram sem reserva
+                SemReserva++;
+            }
+
+
+            aterrissar(&PISTA2, &espera_2);
+            *(p_controleAterrissar) = 2;
+
+        } else if ((Vazia(espera_3) == 0) &&
+                   (espera_3.Aviao[espera_3.Frente - 1].quantidadeTempo <
+                    espera_1.Aviao[espera_1.Frente - 1].quantidadeTempo) &&
+                   (espera_3.Aviao[espera_3.Frente - 1].quantidadeTempo <
+                    espera_2.Aviao[espera_2.Frente - 1].quantidadeTempo) &&
+                   (espera_3.Aviao[espera_3.Frente - 1].quantidadeTempo <
+                    espera_4.Aviao[espera_4.Frente - 1].quantidadeTempo)) {
+
+            if (espera_3.Aviao[espera_3.Frente - 1].quantidadeTempo ==
+                1) {//contador de avioes que decolaram sem reserva
+                SemReserva++;
+            }
+
+            aterrissar(&PISTA2, &espera_3);
             *(p_controleAterrissar) = 3;
 
 
@@ -137,17 +266,56 @@ int main() {
                    (espera_4.Aviao[espera_4.Frente - 1].quantidadeTempo <
                     espera_3.Aviao[espera_3.Frente - 1].quantidadeTempo)) {
 
-            aterrissar(&PISTA1, &PISTA2, &espera_4);
+
+            if (espera_4.Aviao[espera_4.Frente - 1].quantidadeTempo ==
+                1) {//contador de avioes que decolaram sem reserva
+                SemReserva++;
+            }
+
+            aterrissar(&PISTA2, &espera_4);
             *(p_controleAterrissar) = 4;
 
-        } else if ((Vazia(espera_1) == 0) && (Vazia(espera_2) == 0) && (Vazia(espera_3) == 0) &&
-                   (Vazia(espera_4) == 0)) {//se forem todos iguais, adiciona no 1 mesmo
-            aterrissar(&PISTA1, &PISTA2, &espera_1);
+        } else if ((Vazia(espera_4) == 0)) {//se forem todos iguais, adiciona no 1 mesmo
+
+            if (espera_4.Aviao[espera_4.Frente - 1].quantidadeTempo ==
+                1) {//contador de avioes que decolaram sem reserva
+                SemReserva++;
+            }
+
+            aterrissar(&PISTA2, &espera_4);
+            *(p_controleAterrissar) = 4;
+
+        } else if ((Vazia(espera_3) == 0)) {//se forem todos iguais, adiciona no 1 mesmo
+
+            if (espera_3.Aviao[espera_3.Frente - 1].quantidadeTempo ==
+                1) {//contador de avioes que decolaram sem reserva
+                SemReserva++;
+            }
+
+            aterrissar(&PISTA2, &espera_3);
+            *(p_controleAterrissar) = 3;
+
+        } else if ((Vazia(espera_2) == 0)) {//se forem todos iguais, adiciona no 1 mesmo
+
+            if (espera_2.Aviao[espera_2.Frente - 1].quantidadeTempo ==
+                1) {//contador de avioes que decolaram sem reserva
+                SemReserva++;
+            }
+
+            aterrissar(&PISTA2, &espera_2);
+            *(p_controleAterrissar) = 2;
+
+        } else if ((Vazia(espera_1) == 0)) {//se forem todos iguais, adiciona no 1 mesmo
+
+            if (espera_1.Aviao[espera_1.Frente - 1].quantidadeTempo ==
+                1) {//contador de avioes que decolaram sem reserva
+                SemReserva++;
+            }
+
+            aterrissar(&PISTA2, &espera_1);
             *(p_controleAterrissar) = 1;
 
         }
-
-        //  }
 
 
         //*********** SESSAO PARA DECOLAR AVIAO OU ATERRISSAGEM DE EMERGENCIA  *******************
@@ -156,24 +324,29 @@ int main() {
             espera_1.Aviao[espera_1.Frente - 1].quantidadeTempo == 1) {
 
             emergencia_e_decolar(&PISTA3, &espera_1);
+            SemReserva++;//contador de aviao sem reserva
 
         } else if ((Vazia(espera_2) == 0) &&
                    espera_2.Aviao[espera_2.Frente - 1].quantidadeTempo == 1) {
 
             emergencia_e_decolar(&PISTA3, &espera_2);
+            SemReserva++;//contador de aviao sem reserva
 
         } else if ((Vazia(espera_3) == 0) &&
                    espera_3.Aviao[espera_3.Frente - 1].quantidadeTempo == 1) {
 
             emergencia_e_decolar(&PISTA3, &espera_3);
+            SemReserva++;//contador de aviao sem reserva
 
 
         } else if ((Vazia(espera_4) == 0) &&
                    espera_4.Aviao[espera_4.Frente - 1].quantidadeTempo == 1) {
 
             emergencia_e_decolar(&PISTA3, &espera_4);
+            SemReserva++;//contador de aviao sem reserva
 
-        } else {//se nao tiver nenhum aviao com emergencia para pousar, entao os avioes iram poder decolar
+        } else if (Vazia(fila_DECOLAR) == 0) {
+            //se nao tiver nenhum aviao com emergencia para pousar, entao os avioes iram poder decolar
             emergencia_e_decolar(&PISTA3, &fila_DECOLAR);
         }
 
@@ -236,7 +409,7 @@ int main() {
     Imprimir(&fila_DECOLAR);;
 
     //d) o número de aviões que aterrissam sem reserva de combustível.*/
-
+    printf("\n\nAviões que aterrissam sem reserva de combustível: %d", SemReserva);
 
     printf("\nPrograma Finalizado com sucesso.\n");
 

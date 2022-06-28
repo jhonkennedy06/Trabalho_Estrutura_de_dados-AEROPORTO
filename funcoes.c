@@ -141,20 +141,19 @@ void esperaAterrissar(aeronave *aviaoATERRISSAR, int SORTEIO_ATERRISSAR,
     }
 
 }
-
+//    if (PISTA1->tamanhoPista < PISTA2->tamanhoPista) {
 //funçao para retirar os avioes da fila de espera e colocar eles para decolar
-void aterrissar(Fila *PISTA1, Fila *PISTA2, Fila *filaEspera) {
+void aterrissar( Fila *PISTA, Fila *filaEspera) {
 
-    if (PISTA1->tamanhoPista < PISTA2->tamanhoPista) {
         //compara se o tamanho da pista 1 ta menor que a 2
         printf("\nPISTA 1 ANTES");
 
         printf("\nFILA ESPERA");
         Imprimir(filaEspera);
         printf("\nFILA ATERRISSAR");
-        Imprimir(PISTA1);
+        Imprimir(PISTA);
 
-        Enfileira(filaEspera->Aviao, filaEspera->Frente - 1, PISTA1);
+        Enfileira(filaEspera->Aviao, filaEspera->Frente - 1, PISTA);
         Desenfileira(filaEspera, &filaEspera->Aviao[(filaEspera->Frente) - 1]);
 
         printf("\nPISTA 1 DEPOIS");
@@ -162,24 +161,9 @@ void aterrissar(Fila *PISTA1, Fila *PISTA2, Fila *filaEspera) {
         printf("\nFILA ESPERA");
         Imprimir(filaEspera);
         printf("\nFILA ATERRISSAR");
-        Imprimir(PISTA1);
+        Imprimir(PISTA);
 
-    } else {
-        printf("\nPISTA 2 ANTES");
-        printf("\nFILA ESPERA");
-        Imprimir(filaEspera);
-        printf("\nFILA ATERRISSAR");
-        Imprimir(PISTA2);
-        Enfileira(filaEspera->Aviao, filaEspera->Frente - 1, PISTA2);
-        Desenfileira(filaEspera, &filaEspera->Aviao[filaEspera->Frente - 1]);
 
-        printf("\nPISTA 2 DEPOIS");
-
-        printf("\nFILA ESPERA");
-        Imprimir(filaEspera);
-        printf("\nFILA ATERRISSAR");
-        Imprimir(PISTA2);
-    }
 }
 
 //funçao de emergencia para avioes sem reserva de combustivel e para decolar
