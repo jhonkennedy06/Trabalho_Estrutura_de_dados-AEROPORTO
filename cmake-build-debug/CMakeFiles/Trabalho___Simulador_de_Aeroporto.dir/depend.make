@@ -7,6 +7,9 @@ CMakeFiles/Trabalho___Simulador_de_Aeroporto.dir/ATERRISSAR.c.o: \
 CMakeFiles/Trabalho___Simulador_de_Aeroporto.dir/CriarAviao.c.o: \
  ../CriarAviao.c \
  ../Trabalho\ -\ Simulador\ de\ Aeroporto.h
+CMakeFiles/Trabalho___Simulador_de_Aeroporto.dir/DECOLAR.c.o: \
+ ../DECOLAR.c \
+ ../Trabalho\ -\ Simulador\ de\ Aeroporto.h
 CMakeFiles/Trabalho___Simulador_de_Aeroporto.dir/main.c.o: \
  ../Trabalho\ -\ Simulador\ de\ Aeroporto.h \
  ../main.c

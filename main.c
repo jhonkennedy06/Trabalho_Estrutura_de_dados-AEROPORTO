@@ -12,22 +12,22 @@ int main() {
             ID_aterrissagem = 1, *p_ID_aterrissagem = &ID_aterrissagem, QTDITERAÇOES = 0;
     int controleEspera = 1, *p_controleEspera = &controleEspera;
 
-    FilaAterrissar PISTA_ATERRISSAR1, PISTA_ATERRISSAR2, PISTA_ATERRISSAR3;//VARIAVEIS PARA PISTA DO AEROPORTO
-    FilaAterrissar prateleira1_PISTA_ATERRISSAR1, prateleira2_PISTA_ATERRISSAR1, prateleira1_PISTA_ATERRISSAR2, prateleira2_PISTA_ATERRISSAR2; //VARIAVEIS PARA PRATELEIRAS DE PISTAS
+    FilaAterrissar p_ATERRISSAR1, p_ATERRISSAR2, p_ATERRISSAR3;//VARIAVEIS PARA PISTA DO AEROPORTO
+    FilaAterrissar Pista_1_espera_1, Pista_1_espera_2, Pista_2_espera_1, Pista_2_espera_2; //VARIAVEIS PARA PRATELEIRAS DE PISTAS
     //Criar pistas(filas) do aeroporto
-    CriarFilaAterrisar(&PISTA_ATERRISSAR1);
-    CriarFilaAterrisar(&PISTA_ATERRISSAR2);
-    CriarFilaAterrisar(&PISTA_ATERRISSAR3);
-    CriarFilaAterrisar(&prateleira1_PISTA_ATERRISSAR1);
-    CriarFilaAterrisar(&prateleira2_PISTA_ATERRISSAR1);
-    CriarFilaAterrisar(&prateleira1_PISTA_ATERRISSAR2);
-    CriarFilaAterrisar(&prateleira2_PISTA_ATERRISSAR2);
+    CriarFilaAterrisar(&p_ATERRISSAR1);
+    CriarFilaAterrisar(&p_ATERRISSAR2);
+    CriarFilaAterrisar(&p_ATERRISSAR3);
+    CriarFilaAterrisar(&Pista_1_espera_1);
+    CriarFilaAterrisar(&Pista_1_espera_2);
+    CriarFilaAterrisar(&Pista_2_espera_1);
+    CriarFilaAterrisar(&Pista_2_espera_2);
 
     printf("\nDigite a quantidade de iteraçoes que o aeroporto tera: ");
     scanf("%d%*c", &QTDITERAÇOES);
 
     for (int i = 0; i < QTDITERAÇOES; ++i) {
-        printf("\nTEMPO %d", i + 1);
+        printf("\nTEMPO %d ------------------------------------------------------------------", i + 1);
         //------------------------   PARTE PARA CRIAR AVIOES ------------------------------------------------------------
         //SORTEIA O NUMERO DE AVIOES A SEREM CRIADOS
         SORTEIO_DECOLAR = rand() % 4;//Sorteio do numero de avioes para decolagem
@@ -46,41 +46,77 @@ int main() {
         //apos criar os avioes, iremos passar o vetor para a funçao e depois iremos inserir um item por vez a cada prateleira de espera
         if (SORTEIO_ATERRISSAR != 0) {
             esperaAterrissar(
-                    aviaoATERRISSAR, SORTEIO_ATERRISSAR, &prateleira1_PISTA_ATERRISSAR1,
-                    &prateleira2_PISTA_ATERRISSAR1,
-                    &prateleira1_PISTA_ATERRISSAR2, &prateleira2_PISTA_ATERRISSAR2, p_controleEspera);
+                    aviaoATERRISSAR, SORTEIO_ATERRISSAR, &Pista_1_espera_1,
+                    &Pista_1_espera_2,
+                    &Pista_2_espera_1, &Pista_2_espera_2, p_controleEspera);
         } else {
             printf("\n\nNenhum avião aterrissando\n\n");
         }
 
 
+        //parte onde iremos ver qual é o aviao nao tem reserva de combustivel
+        if (Pista_1_espera_1.Aviao[Pista_1_espera_1.Frente].quantidadeTempo == 1) {
+
+            emergencia(&p_ATERRISSAR3, &Pista_1_espera_1);
+
+        } else if (Pista_1_espera_2.Aviao[Pista_1_espera_2.Frente].quantidadeTempo == 1) {
+
+            emergencia(&p_ATERRISSAR3, &Pista_1_espera_2);
+
+        } else if (Pista_2_espera_1.Aviao[Pista_2_espera_1.Frente].quantidadeTempo == 1) {
+
+            emergencia(&p_ATERRISSAR3, &Pista_2_espera_1);
+
+
+        } else if (Pista_2_espera_2.Aviao[Pista_2_espera_2.Frente].quantidadeTempo == 1) {
+
+            emergencia(&p_ATERRISSAR3, &Pista_2_espera_2);
+
+        }
+
         //parte onde iremos ver qual é o aviao com menor tempo de combustivel
-        if ((prateleira1_PISTA_ATERRISSAR1.Aviao[prateleira1_PISTA_ATERRISSAR1.Frente].quantidadeTempo <
-             prateleira2_PISTA_ATERRISSAR1.Aviao[prateleira2_PISTA_ATERRISSAR1.Frente].quantidadeTempo) &&
-            (prateleira1_PISTA_ATERRISSAR1.Aviao[prateleira1_PISTA_ATERRISSAR1.Frente].quantidadeTempo <
-             prateleira1_PISTA_ATERRISSAR2.Aviao[prateleira1_PISTA_ATERRISSAR2.Frente].quantidadeTempo) &&
-            (prateleira1_PISTA_ATERRISSAR1.Aviao[prateleira1_PISTA_ATERRISSAR1.Frente].quantidadeTempo <
-             prateleira2_PISTA_ATERRISSAR2.Aviao[prateleira2_PISTA_ATERRISSAR2.Frente].quantidadeTempo)) {
+        if ((Pista_1_espera_1.Aviao[Pista_1_espera_1.Frente].quantidadeTempo <
+             Pista_1_espera_2.Aviao[Pista_1_espera_2.Frente].quantidadeTempo) &&
+            (Pista_1_espera_1.Aviao[Pista_1_espera_1.Frente].quantidadeTempo <
+             Pista_2_espera_1.Aviao[Pista_2_espera_1.Frente].quantidadeTempo) &&
+            (Pista_1_espera_1.Aviao[Pista_1_espera_1.Frente].quantidadeTempo <
+             Pista_2_espera_2.Aviao[Pista_2_espera_2.Frente].quantidadeTempo)) {
+
+            aterrissar(&p_ATERRISSAR1, &p_ATERRISSAR2, &Pista_1_espera_1);
 
 
-        } else if ((prateleira2_PISTA_ATERRISSAR1->tamanhoPista < prateleira1_PISTA_ATERRISSAR1->tamanhoPista) &&
-                   (prateleira2_PISTA_ATERRISSAR1->tamanhoPista < prateleira1_PISTA_ATERRISSAR2->tamanhoPista) &&
-                   (prateleira2_PISTA_ATERRISSAR1->tamanhoPista < prateleira2_PISTA_ATERRISSAR2->tamanhoPista)) {
+        } else if (((Pista_1_espera_2.Aviao[Pista_1_espera_2.Frente].quantidadeTempo <
+                     Pista_1_espera_1.Aviao[Pista_1_espera_1.Frente].quantidadeTempo) &&
+                    (Pista_1_espera_2.Aviao[Pista_1_espera_2.Frente].quantidadeTempo <
+                     Pista_2_espera_1.Aviao[Pista_2_espera_1.Frente].quantidadeTempo) &&
+                    (Pista_1_espera_2.Aviao[Pista_1_espera_2.Frente].quantidadeTempo <
+                     Pista_2_espera_2.Aviao[Pista_2_espera_2.Frente].quantidadeTempo))) {
+
+            aterrissar(&p_ATERRISSAR1, &p_ATERRISSAR2, &Pista_1_espera_2);
 
 
-        } else if ((prateleira1_PISTA_ATERRISSAR2->tamanhoPista < prateleira1_PISTA_ATERRISSAR1->tamanhoPista) &&
-                   (prateleira1_PISTA_ATERRISSAR2->tamanhoPista < prateleira2_PISTA_ATERRISSAR1->tamanhoPista) &&
-                   (prateleira1_PISTA_ATERRISSAR2->tamanhoPista < prateleira2_PISTA_ATERRISSAR2->tamanhoPista)) {
+        } else if ((Pista_2_espera_1.Aviao[Pista_2_espera_1.Frente].quantidadeTempo <
+                    Pista_1_espera_1.Aviao[Pista_1_espera_1.Frente].quantidadeTempo) &&
+                   (Pista_2_espera_1.Aviao[Pista_2_espera_1.Frente].quantidadeTempo <
+                    Pista_1_espera_2.Aviao[Pista_1_espera_2.Frente].quantidadeTempo) &&
+                   (Pista_2_espera_1.Aviao[Pista_2_espera_1.Frente].quantidadeTempo <
+                    Pista_2_espera_2.Aviao[Pista_2_espera_2.Frente].quantidadeTempo)) {
+
+            aterrissar(&p_ATERRISSAR1, &p_ATERRISSAR2, &Pista_2_espera_1);
 
 
-        } else if ((prateleira2_PISTA_ATERRISSAR2->tamanhoPista < prateleira1_PISTA_ATERRISSAR1->tamanhoPista) &&
-                   (prateleira2_PISTA_ATERRISSAR2->tamanhoPista < prateleira2_PISTA_ATERRISSAR1->tamanhoPista) &&
-                   (prateleira2_PISTA_ATERRISSAR2->tamanhoPista > prateleira1_PISTA_ATERRISSAR2->tamanhoPista)) {
+        } else if ((Pista_2_espera_2.Aviao[Pista_2_espera_2.Frente].quantidadeTempo <
+                    Pista_1_espera_1.Aviao[Pista_1_espera_1.Frente].quantidadeTempo) &&
+                   (Pista_2_espera_2.Aviao[Pista_2_espera_2.Frente].quantidadeTempo <
+                    Pista_1_espera_2.Aviao[Pista_1_espera_2.Frente].quantidadeTempo) &&
+                   (Pista_2_espera_2.Aviao[Pista_2_espera_2.Frente].quantidadeTempo <
+                    Pista_2_espera_1.Aviao[Pista_2_espera_1.Frente].quantidadeTempo)) {
+
+            aterrissar(&p_ATERRISSAR1, &p_ATERRISSAR2, &Pista_2_espera_2);
 
         }
 
 
-        aterrissar(&PISTA_ATERRISSAR1, &PISTA_ATERRISSAR2, &PISTA_ATERRISSAR3);
 
         //apos criar os avioes, iremos passar o vetor para a funçao e depois iremos inserir um item por vez a cada prateleira de espera
         if (SORTEIO_DECOLAR != 0) {
