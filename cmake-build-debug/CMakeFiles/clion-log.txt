@@ -1,0 +1,4 @@
+/snap/clion/190/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_DEPENDS_USE_COMPILER=FALSE -G "CodeBlocks - Unix Makefiles" -S "/home/jhonstar69/CLionProjects/Trabalho - Simulador de Aeroporto" -B "/home/jhonstar69/CLionProjects/Trabalho - Simulador de Aeroporto/cmake-build-debug"
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/jhonstar69/CLionProjects/Trabalho - Simulador de Aeroporto/cmake-build-debug

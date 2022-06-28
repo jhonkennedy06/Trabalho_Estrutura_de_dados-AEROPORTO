@@ -1,0 +1,3 @@
+/home/jhonstar69/CLionProjects/Trabalho - Simulador de Aeroporto/cmake-build-debug/CMakeFiles/Trabalho___Simulador_de_Aeroporto.dir
+/home/jhonstar69/CLionProjects/Trabalho - Simulador de Aeroporto/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/jhonstar69/CLionProjects/Trabalho - Simulador de Aeroporto/cmake-build-debug/CMakeFiles/rebuild_cache.dir
