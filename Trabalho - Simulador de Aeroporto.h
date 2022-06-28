@@ -1,7 +1,7 @@
 #ifndef TRABALHO___SIMULADOR_DE_AEROPORTO_TRABALHO_SIMULADOR_DE_AEROPORTO_H
 #define TRABALHO___SIMULADOR_DE_AEROPORTO_TRABALHO_SIMULADOR_DE_AEROPORTO_H
 
-#define MAXTAMFILAS 100000 //TAMANHO MAXIMO PARA FILAS
+#define MAXTAMFILAS 1000 //TAMANHO MAXIMO PARA FILAS
 
 typedef int Apontadores;
 
@@ -9,13 +9,14 @@ typedef int Apontadores;
 
 typedef struct {
     int ID, quantidadeTempo;
+        int TempoEspera;
+
 } aeronave;//TIPO PARA AVIAO
 
 
 typedef struct {
     aeronave Aviao[MAXTAMFILAS];
     int tamanhoPista;
-    int TempoEspera;
     Apontadores Frente, Tras;
 } Fila; //FILAS PARA AVIAO
 
@@ -47,5 +48,6 @@ void Combustivel(Fila *espera);
 
 void decolar(aeronave *aviaoDECOLAR, int SORTEIO_DECOLAR, Fila *fila_DECOLAR); //função para decolagem
 
+void medias(Fila *espera);//funcao para acumular tempo
 
 #endif //TRABALHO___SIMULADOR_DE_AEROPORTO_TRABALHO_SIMULADOR_DE_AEROPORTO_H

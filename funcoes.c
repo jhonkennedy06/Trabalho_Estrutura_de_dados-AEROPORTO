@@ -14,13 +14,16 @@ void criarAviao(aeronave *aviaoDECOLAR, aeronave *aviaoATERRISSAR, int SORTEIO_A
 
     for (int i = 0; i < SORTEIO_ATERRISSAR; ++i) {
         aviaoATERRISSAR[i].ID = *p_ID_aterrissagem;
-        aviaoATERRISSAR[i].quantidadeTempo = 1 + (rand() % 20);;
+        aviaoATERRISSAR[i].quantidadeTempo = 1 + (rand() % 20);
+        aviaoATERRISSAR[i].TempoEspera = 0;
         *(p_ID_aterrissagem) += 2;
     }
     for (int i = 0; i < SORTEIO_DECOLAR; ++i) {
         aviaoDECOLAR[i].ID = *p_ID_decolagem;
         *(p_ID_decolagem) += 2;
         aviaoDECOLAR[i].quantidadeTempo = 20;
+        aviaoDECOLAR[i].TempoEspera = 0;
+
     }
 }
 
@@ -77,32 +80,31 @@ void esperaAterrissar(aeronave *aviaoATERRISSAR, int SORTEIO_ATERRISSAR,
     for (int i = 0; i < SORTEIO_ATERRISSAR; ++i) {
 
         //CODIGO PRECISAR MELHORAR, SERVE PARA ORDENAR AS FILAS COM TAMANHOS IGUAIS
-         //condição secundaria para a fila crescer igual
-         if ((espera_1->tamanhoPista < espera_2->tamanhoPista) &&
-             (espera_1->tamanhoPista < espera_3->tamanhoPista) &&
-             (espera_1->tamanhoPista < espera_4->tamanhoPista)) {
-             //acrescenta o aviao atual a prateleira 1 da pista 1
+        //condição secundaria para a fila crescer igual
+        if ((espera_1->tamanhoPista < espera_2->tamanhoPista) &&
+            (espera_1->tamanhoPista < espera_3->tamanhoPista) &&
+            (espera_1->tamanhoPista < espera_4->tamanhoPista)) {
+            //acrescenta o aviao atual a prateleira 1 da pista 1
 
-             *(p_controleAterrisagem) = 1;
+            *(p_controleAterrisagem) = 1;
 
-         } else if ((espera_2->tamanhoPista < espera_1->tamanhoPista) &&
-                    (espera_2->tamanhoPista < espera_3->tamanhoPista) &&
-                    (espera_2->tamanhoPista < espera_4->tamanhoPista)) {
+        } else if ((espera_2->tamanhoPista < espera_1->tamanhoPista) &&
+                   (espera_2->tamanhoPista < espera_3->tamanhoPista) &&
+                   (espera_2->tamanhoPista < espera_4->tamanhoPista)) {
 
-             *(p_controleAterrisagem) = 2
-                     ;
-         } else if ((espera_3->tamanhoPista < espera_1->tamanhoPista) &&
-                    (espera_3->tamanhoPista < espera_2->tamanhoPista) &&
-                    (espera_3->tamanhoPista < espera_4->tamanhoPista)) {
+            *(p_controleAterrisagem) = 2;
+        } else if ((espera_3->tamanhoPista < espera_1->tamanhoPista) &&
+                   (espera_3->tamanhoPista < espera_2->tamanhoPista) &&
+                   (espera_3->tamanhoPista < espera_4->tamanhoPista)) {
 
-             *(p_controleAterrisagem) = 3;
+            *(p_controleAterrisagem) = 3;
 
-         } else if ((espera_4->tamanhoPista < espera_1->tamanhoPista) &&
-                    (espera_4->tamanhoPista < espera_2->tamanhoPista) &&
-                    (espera_4->tamanhoPista > espera_3->tamanhoPista)) {
+        } else if ((espera_4->tamanhoPista < espera_1->tamanhoPista) &&
+                   (espera_4->tamanhoPista < espera_2->tamanhoPista) &&
+                   (espera_4->tamanhoPista > espera_3->tamanhoPista)) {
 
-             *(p_controleAterrisagem) = 4;
-         }
+            *(p_controleAterrisagem) = 4;
+        }
 
         if (*(p_controleAterrisagem) == 1) {
             *(p_controleAterrisagem) = 2;//altera a variavel auxiliar para adicionar na posicao seguinte
@@ -141,27 +143,28 @@ void esperaAterrissar(aeronave *aviaoATERRISSAR, int SORTEIO_ATERRISSAR,
     }
 
 }
+
 //    if (PISTA1->tamanhoPista < PISTA2->tamanhoPista) {
 //funçao para retirar os avioes da fila de espera e colocar eles para decolar
-void aterrissar( Fila *PISTA, Fila *filaEspera) {
+void aterrissar(Fila *PISTA, Fila *filaEspera) {
 
-        //compara se o tamanho da pista 1 ta menor que a 2
-        printf("\nPISTA 1 ANTES");
+    //compara se o tamanho da pista 1 ta menor que a 2
+    printf("\nPISTA 1 ANTES");
 
-        printf("\nFILA ESPERA");
-        Imprimir(filaEspera);
-        printf("\nFILA ATERRISSAR");
-        Imprimir(PISTA);
+    printf("\nFILA ESPERA");
+    Imprimir(filaEspera);
+    printf("\nFILA ATERRISSAR");
+    Imprimir(PISTA);
 
-        Enfileira(filaEspera->Aviao, filaEspera->Frente - 1, PISTA);
-        Desenfileira(filaEspera, &filaEspera->Aviao[(filaEspera->Frente) - 1]);
+    Enfileira(filaEspera->Aviao, filaEspera->Frente - 1, PISTA);
+    Desenfileira(filaEspera, &filaEspera->Aviao[(filaEspera->Frente) - 1]);
 
-        printf("\nPISTA 1 DEPOIS");
+    printf("\nPISTA 1 DEPOIS");
 
-        printf("\nFILA ESPERA");
-        Imprimir(filaEspera);
-        printf("\nFILA ATERRISSAR");
-        Imprimir(PISTA);
+    printf("\nFILA ESPERA");
+    Imprimir(filaEspera);
+    printf("\nFILA ATERRISSAR");
+    Imprimir(PISTA);
 
 
 }
@@ -174,7 +177,7 @@ void emergencia_e_decolar(Fila *PISTA3, Fila *filaEspera) {
 
 }
 
-
+//retirar combustivel de aviao por vez
 void Combustivel(Fila *espera) {
     for (int i = espera->Frente - 1; i < espera->Tras - 1; ++i) {
 
@@ -194,6 +197,12 @@ void Combustivel(Fila *espera) {
     }
 }
 
+//funçao para acumular para fazer media de avioes
+void medias(Fila *espera) {
+    for (int i = espera->Frente - 1; i < espera->Tras - 1; ++i) {
+        espera->Aviao[i].TempoEspera = espera->Aviao[i].TempoEspera + 1;
+    }
+}
 
 //************************    FUNÇOES PARA FILAS DE DECOLAR  ***********************************************
 
@@ -204,6 +213,7 @@ void decolar(aeronave *aviaoDECOLAR, int SORTEIO_DECOLAR, Fila *fila_DECOLAR) {
 
         //acrescenta o aviao atual na pista 2
         Enfileira(aviaoDECOLAR, i, fila_DECOLAR);
+
         Imprimir(fila_DECOLAR);
         printf("\nPISTA DECOLAR 1");
 

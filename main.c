@@ -4,13 +4,15 @@
 
 #include "Trabalho - Simulador de Aeroporto.h"
 
-
+//controleAterrissar serve para controlar os avioes que vao entrar nas filas de espera
 int main() {
     srand((unsigned) time(NULL));
 //ID_decolagem é par e
     int SORTEIO_DECOLAR, SORTEIO_ATERRISSAR, ID_decolagem = 0, *p_ID_decolagem = &ID_decolagem,
             ID_aterrissagem = 1, *p_ID_aterrissagem = &ID_aterrissagem, QTDITERAÇOES, SemReserva = 0;
-    int controleAterrissar = 1, *p_controleAterrissar = &controleAterrissar, reserva_zerada = 0;
+    int controleAterrissar = 1, *p_controleAterrissar = &controleAterrissar;
+    float media_aterrisagem, cont_tmp_espera = 0, n_aviao_aterrissar = 0,
+            media_decolagem, cont_tmp_decolagem = 0, n_aviao_decolagem = 0;
 
     //VARIAVEIS PARA PISTAS DE ATERRISSAGEM DO AEROPORTO
     Fila PISTA1, PISTA2, PISTA3, fila_DECOLAR;
@@ -70,9 +72,7 @@ int main() {
 
         //***************************** SESSAO PARA INSERIR AVIAO NA PISTA **********************************
 
-        //    if ((espera_1.tamanhoPista != 0) && (espera_2.tamanhoPista && espera_3.tamanhoPista &&
-        //      espera_4.tamanhoPista)) {
-
+        //sessao para acumular tempos
 
         //parte para retirar os avioes que cairam da fila
         if (espera_1.Aviao[espera_1.Frente - 1].quantidadeTempo == 0) {
@@ -108,6 +108,10 @@ int main() {
                 SemReserva++;
             }
 
+            //faz a contagem de quanto tempo cada aviao demorou para aterrissar ou decolar
+            cont_tmp_espera = cont_tmp_espera + espera_1.Aviao[espera_1.Frente - 1].TempoEspera;
+            n_aviao_aterrissar++;
+
             aterrissar(&PISTA1, &espera_1);
             *(p_controleAterrissar) = 1; //variavel para controlar crescimento igual das pistas
 
@@ -124,6 +128,9 @@ int main() {
                 SemReserva++;
             }
 
+            //faz a contagem de quanto tempo cada aviao demorou para aterrissar ou decolar
+            cont_tmp_espera = cont_tmp_espera + espera_2.Aviao[espera_2.Frente - 1].TempoEspera;
+            n_aviao_aterrissar++;
 
             aterrissar(&PISTA1, &espera_2);
             *(p_controleAterrissar) = 2;
@@ -141,6 +148,10 @@ int main() {
                 SemReserva++;
             }
 
+            //faz a contagem de quanto tempo cada aviao demorou para aterrissar ou decolar
+            cont_tmp_espera = cont_tmp_espera + espera_3.Aviao[espera_3.Frente - 1].TempoEspera;
+            n_aviao_aterrissar++;
+
             aterrissar(&PISTA1, &espera_3);
             *(p_controleAterrissar) = 3;
 
@@ -157,6 +168,10 @@ int main() {
                 SemReserva++;
             }
 
+            //faz a contagem de quanto tempo cada aviao demorou para aterrissar ou decolar
+            cont_tmp_espera = cont_tmp_espera + espera_4.Aviao[espera_4.Frente - 1].TempoEspera;
+            n_aviao_aterrissar++;
+
             aterrissar(&PISTA1, &espera_4);
             *(p_controleAterrissar) = 4;
 
@@ -166,6 +181,10 @@ int main() {
                 1) {//contador de avioes que decolaram sem reserva
                 SemReserva++;
             }
+
+            //faz a contagem de quanto tempo cada aviao demorou para aterrissar ou decolar
+            cont_tmp_espera = cont_tmp_espera + espera_4.Aviao[espera_4.Frente - 1].TempoEspera;
+            n_aviao_aterrissar++;
 
             aterrissar(&PISTA1, &espera_4);
             *(p_controleAterrissar) = 4;
@@ -179,6 +198,10 @@ int main() {
                 SemReserva++;
             }
 
+            //faz a contagem de quanto tempo cada aviao demorou para aterrissar ou decolar
+            cont_tmp_espera = cont_tmp_espera + espera_3.Aviao[espera_3.Frente - 1].TempoEspera;
+            n_aviao_aterrissar++;
+
             aterrissar(&PISTA1, &espera_3);
             *(p_controleAterrissar) = 3;
 
@@ -190,15 +213,23 @@ int main() {
                 SemReserva++;
             }
 
+            //faz a contagem de quanto tempo cada aviao demorou para aterrissar ou decolar
+            cont_tmp_espera = cont_tmp_espera + espera_2.Aviao[espera_2.Frente - 1].TempoEspera;
+            n_aviao_aterrissar++;
+
             aterrissar(&PISTA1, &espera_2);
             *(p_controleAterrissar) = 2;
 
         } else if ((Vazia(espera_1) == 0)) {//se forem todos iguais, adiciona no 1 mesmo
 
             if (espera_1.Aviao[espera_1.Frente - 1].quantidadeTempo ==
-                1) {//contador de avioes que decolaram sem reserva
+                1) {//contador de avioes que aterrissaram sem reserva
                 SemReserva++;
             }
+
+            //faz a contagem de quanto tempo cada aviao demorou para aterrissar ou decolar
+            cont_tmp_espera = cont_tmp_espera + espera_1.Aviao[espera_1.Frente - 1].TempoEspera;
+            n_aviao_aterrissar++;
 
             aterrissar(&PISTA1, &espera_1);
             *(p_controleAterrissar) = 1;
@@ -220,6 +251,10 @@ int main() {
                 SemReserva++;
             }
 
+            //faz a contagem de quanto tempo cada aviao demorou para aterrissar ou decolar
+            cont_tmp_espera = cont_tmp_espera + espera_1.Aviao[espera_1.Frente - 1].TempoEspera;
+            n_aviao_aterrissar++;
+
             aterrissar(&PISTA2, &espera_1);
             *(p_controleAterrissar) = 1; //variavel para controlar crescimento igual das pistas
 
@@ -237,6 +272,9 @@ int main() {
                 SemReserva++;
             }
 
+            //faz a contagem de quanto tempo cada aviao demorou para aterrissar ou decolar
+            cont_tmp_espera = cont_tmp_espera + espera_2.Aviao[espera_2.Frente - 1].TempoEspera;
+            n_aviao_aterrissar++;
 
             aterrissar(&PISTA2, &espera_2);
             *(p_controleAterrissar) = 2;
@@ -253,6 +291,10 @@ int main() {
                 1) {//contador de avioes que decolaram sem reserva
                 SemReserva++;
             }
+
+            //faz a contagem de quanto tempo cada aviao demorou para aterrissar ou decolar
+            cont_tmp_espera = cont_tmp_espera + espera_3.Aviao[espera_3.Frente - 1].TempoEspera;
+            n_aviao_aterrissar++;
 
             aterrissar(&PISTA2, &espera_3);
             *(p_controleAterrissar) = 3;
@@ -272,6 +314,10 @@ int main() {
                 SemReserva++;
             }
 
+            //faz a contagem de quanto tempo cada aviao demorou para aterrissar ou decolar
+            cont_tmp_espera = cont_tmp_espera + espera_4.Aviao[espera_4.Frente - 1].TempoEspera;
+            n_aviao_aterrissar++;
+
             aterrissar(&PISTA2, &espera_4);
             *(p_controleAterrissar) = 4;
 
@@ -281,6 +327,10 @@ int main() {
                 1) {//contador de avioes que decolaram sem reserva
                 SemReserva++;
             }
+
+            //faz a contagem de quanto tempo cada aviao demorou para aterrissar ou decolar
+            cont_tmp_espera = cont_tmp_espera + espera_4.Aviao[espera_4.Frente - 1].TempoEspera;
+            n_aviao_aterrissar++;
 
             aterrissar(&PISTA2, &espera_4);
             *(p_controleAterrissar) = 4;
@@ -292,6 +342,10 @@ int main() {
                 SemReserva++;
             }
 
+            //faz a contagem de quanto tempo cada aviao demorou para aterrissar ou decolar
+            cont_tmp_espera = cont_tmp_espera + espera_3.Aviao[espera_3.Frente - 1].TempoEspera;
+            n_aviao_aterrissar++;
+
             aterrissar(&PISTA2, &espera_3);
             *(p_controleAterrissar) = 3;
 
@@ -302,6 +356,10 @@ int main() {
                 SemReserva++;
             }
 
+            //faz a contagem de quanto tempo cada aviao demorou para aterrissar ou decolar
+            cont_tmp_espera = cont_tmp_espera + espera_2.Aviao[espera_2.Frente - 1].TempoEspera;
+            n_aviao_aterrissar++;
+
             aterrissar(&PISTA2, &espera_2);
             *(p_controleAterrissar) = 2;
 
@@ -311,6 +369,10 @@ int main() {
                 1) {//contador de avioes que decolaram sem reserva
                 SemReserva++;
             }
+
+            //faz a contagem de quanto tempo cada aviao demorou para aterrissar ou decolar
+            cont_tmp_espera = cont_tmp_espera + espera_1.Aviao[espera_1.Frente - 1].TempoEspera;
+            n_aviao_aterrissar++;
 
             aterrissar(&PISTA2, &espera_1);
             *(p_controleAterrissar) = 1;
@@ -323,17 +385,28 @@ int main() {
         if ((Vazia(espera_1) == 0) &&
             espera_1.Aviao[espera_1.Frente - 1].quantidadeTempo == 1) {
 
+            //faz a contagem de quanto tempo cada aviao demorou para aterrissar ou decolar
+            cont_tmp_espera = cont_tmp_espera + espera_1.Aviao[espera_1.Frente - 1].TempoEspera;
+            n_aviao_aterrissar++;
+
             emergencia_e_decolar(&PISTA3, &espera_1);
             SemReserva++;//contador de aviao sem reserva
 
         } else if ((Vazia(espera_2) == 0) &&
                    espera_2.Aviao[espera_2.Frente - 1].quantidadeTempo == 1) {
+            //faz a contagem de quanto tempo cada aviao demorou para aterrissar ou decolar
+            cont_tmp_espera = cont_tmp_espera + espera_2.Aviao[espera_2.Frente - 1].TempoEspera;
+            n_aviao_aterrissar++;
 
             emergencia_e_decolar(&PISTA3, &espera_2);
             SemReserva++;//contador de aviao sem reserva
 
         } else if ((Vazia(espera_3) == 0) &&
                    espera_3.Aviao[espera_3.Frente - 1].quantidadeTempo == 1) {
+
+            //faz a contagem de quanto tempo cada aviao demorou para aterrissar ou decolar
+            cont_tmp_espera = cont_tmp_espera + espera_3.Aviao[espera_3.Frente - 1].TempoEspera;
+            n_aviao_aterrissar++;
 
             emergencia_e_decolar(&PISTA3, &espera_3);
             SemReserva++;//contador de aviao sem reserva
@@ -342,12 +415,19 @@ int main() {
         } else if ((Vazia(espera_4) == 0) &&
                    espera_4.Aviao[espera_4.Frente - 1].quantidadeTempo == 1) {
 
+            //faz a contagem de quanto tempo cada aviao demorou para aterrissar ou decolar
+            cont_tmp_espera = cont_tmp_espera + espera_4.Aviao[espera_4.Frente - 1].TempoEspera;
+            n_aviao_aterrissar++;
+
             emergencia_e_decolar(&PISTA3, &espera_4);
             SemReserva++;//contador de aviao sem reserva
 
         } else if (Vazia(fila_DECOLAR) == 0) {
             //se nao tiver nenhum aviao com emergencia para pousar, entao os avioes iram poder decolar
             emergencia_e_decolar(&PISTA3, &fila_DECOLAR);
+            //faz a contagem de quanto tempo cada aviao demorou para aterrissar ou decolar
+            cont_tmp_decolagem = cont_tmp_decolagem + fila_DECOLAR.Aviao[fila_DECOLAR.Frente - 1].TempoEspera;
+            n_aviao_decolagem++;
         }
 
         //****************************************************************************************
@@ -355,16 +435,38 @@ int main() {
 
 
         //******************** Sessão para ir retirando combustiveis dos avioes ******************
+        //garante que so ira tira diminuir combustivel se a fila nao estiver vazia
+        if (Vazia(espera_1) == 0) {
+            Combustivel(&espera_1);
+            medias(&espera_1);
+        }
+        if (Vazia(espera_2) == 0) {
+            Combustivel(&espera_2);
+            medias(&espera_2);
+        }
+        if (Vazia(espera_3) == 0) {
+            Combustivel(&espera_3);
+            medias(&espera_3);
+        }
+        if (Vazia(espera_4) == 0) {
+            Combustivel(&espera_4);
+            medias(&espera_4);
+        }
 
-        Combustivel(&espera_1);
-        Combustivel(&espera_2);
-        Combustivel(&espera_3);
-        Combustivel(&espera_4);
+        if (Vazia(espera_1) == 0) { medias(&fila_DECOLAR); }
+
+
+
 
         //****************************************************************************************
 
     }
 
+    //sessao para calcular tempo medio de aterrissagem
+    media_aterrisagem = (cont_tmp_espera / n_aviao_aterrissar);
+
+    //sessao para calcular tempo medio de aterrissagem
+    media_decolagem = (cont_tmp_decolagem / n_aviao_decolagem);
 
     /*
     a) o conteúdo de cada fila;
@@ -407,6 +509,13 @@ int main() {
 
     printf("\nFila de decolagem:");
     Imprimir(&fila_DECOLAR);;
+
+    // b) o tempo médio de espera para decolagem;
+
+    printf("Tempo médio de espera para decolagem: %.2f", media_decolagem);
+
+    //c) o tempo médio de espera para aterrissagem;
+    printf("\nTempo médio de espera para aterrissagem: %.2f ", media_aterrisagem);
 
     //d) o número de aviões que aterrissam sem reserva de combustível.*/
     printf("\n\nAviões que aterrissam sem reserva de combustível: %d", SemReserva);
