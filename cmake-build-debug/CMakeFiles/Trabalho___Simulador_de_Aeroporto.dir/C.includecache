@@ -1,0 +1,20 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/jhonstar69/CLionProjects/Trabalho - Simulador de Aeroporto/Trabalho - Simulador de Aeroporto.h
+
+/home/jhonstar69/CLionProjects/Trabalho - Simulador de Aeroporto/main.c
+stdio.h
+-
+stdlib.h
+-
+time.h
+-
+Trabalho - Simulador de Aeroporto.h
+/home/jhonstar69/CLionProjects/Trabalho - Simulador de Aeroporto/Trabalho - Simulador de Aeroporto.h
+

@@ -35,8 +35,8 @@ void Desenfileira(Fila *Fila, aeronave *Item);
 
 void Imprimir(Fila *fila);
 
-void esperaAterrissar(aeronave *aviaoATERRISSAR, int SORTEIO_ATERRISSAR, Fila *Pista_1_espera_1, Fila *Pista_1_espera_2,
-                      Fila *Pista_2_espera_1, Fila *Pista_2_espera_2, int *p_controleAterrisagem);
+void esperaAterrissar(aeronave *aviaoATERRISSAR, int SORTEIO_ATERRISSAR, Fila *espera_1, Fila *espera_2,
+                      Fila *espera_3, Fila *espera_4, int *p_controleAterrisagem);
 
 void aterrissar(Fila *PISTA1, Fila *PISTA2, Fila *filaEspera);
 
@@ -44,7 +44,7 @@ void emergencia_e_decolar(Fila *PISTA3, Fila *filaEspera);
 
 void Combustivel(Fila *espera);
 
-//************************    FUNÇOES PARA FILAS DE DECOLAGEM  ***********************************************
-void decolar(aeronave *aviaoDECOLAR, int SORTEIO_DECOLAR, Fila *fila_DECOLAR);
+void decolar(aeronave *aviaoDECOLAR, int SORTEIO_DECOLAR, Fila *fila_DECOLAR); //função para decolagem
+
 
 #endif //TRABALHO___SIMULADOR_DE_AEROPORTO_TRABALHO_SIMULADOR_DE_AEROPORTO_H

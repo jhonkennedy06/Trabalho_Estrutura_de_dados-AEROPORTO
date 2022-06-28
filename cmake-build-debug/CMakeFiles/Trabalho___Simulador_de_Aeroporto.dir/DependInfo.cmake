@@ -8,8 +8,8 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "/home/jhonstar69/CLionProjects/Aeroporto versoes antigas/versao 0.5/funcoes.c" "/home/jhonstar69/CLionProjects/Aeroporto versoes antigas/versao 0.5/cmake-build-debug/CMakeFiles/Trabalho___Simulador_de_Aeroporto.dir/funcoes.c.o"
-  "/home/jhonstar69/CLionProjects/Aeroporto versoes antigas/versao 0.5/main.c" "/home/jhonstar69/CLionProjects/Aeroporto versoes antigas/versao 0.5/cmake-build-debug/CMakeFiles/Trabalho___Simulador_de_Aeroporto.dir/main.c.o"
+  "/home/jhonstar69/CLionProjects/Trabalho - Simulador de Aeroporto/funcoes.c" "/home/jhonstar69/CLionProjects/Trabalho - Simulador de Aeroporto/cmake-build-debug/CMakeFiles/Trabalho___Simulador_de_Aeroporto.dir/funcoes.c.o"
+  "/home/jhonstar69/CLionProjects/Trabalho - Simulador de Aeroporto/main.c" "/home/jhonstar69/CLionProjects/Trabalho - Simulador de Aeroporto/cmake-build-debug/CMakeFiles/Trabalho___Simulador_de_Aeroporto.dir/main.c.o"
   )
 set(CMAKE_C_COMPILER_ID "GNU")
 
