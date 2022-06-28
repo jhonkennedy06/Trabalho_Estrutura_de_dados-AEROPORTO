@@ -4,20 +4,15 @@
 #define MAXTAMFILAS 1000 //TAMANHO MAXIMO PARA FILAS
 
 
-typedef struct {
-    int ID, quantidadeTempo;
-} aeronaveAterrissar;//TIPO PARA AVIAO ATERRISANDO
-
-
-typedef struct {
-    int ID;
-} aeronaveDecolar;//TIPO AVIAO DECOLANDO
-
 //TIPOS DE DADOS PARA FILAS
 
 typedef int Apontadores;
 
 //--------------------- TIPO DADOS PARA FILA ATERRISSAR
+typedef struct {
+    int ID, quantidadeTempo;
+} aeronaveAterrissar;//TIPO PARA AVIAO ATERRISANDO
+
 
 typedef struct {
     aeronaveAterrissar Aviao[MAXTAMFILAS];
@@ -28,6 +23,10 @@ typedef struct {
 
 //--------------------- TIPO DADOS PARA FILA DECOLAGEM ----------------------------------------------------------
 
+
+typedef struct {
+    int ID;
+} aeronaveDecolar;//TIPO AVIAO DECOLANDO
 
 typedef struct {
     aeronaveDecolar Aviao[MAXTAMFILAS];
@@ -64,16 +63,29 @@ void criarAviaoDecolando(aeronaveDecolar *aviaoDECOLAR, int SORTEIO, int *p_ID_d
 // Tipo de dados e funçoes das filas
 
 
-//FUNÇOES PARA FILAS
+//FUNÇOES PARA FILAS DE ATERRISSAGEM
 
-void CriarFilaAterrisar(FilaAterrissar *Fila);
+void CriarFilaAterrissar(FilaAterrissar *Fila);
 
-int Vazia(FilaAterrissar Fila);
+int VaziaAterrissar(FilaAterrissar Fila);
 
-void EnfileiraAterrisar(aeronaveAterrissar *aviaoATERRISSAR, int pos, FilaAterrissar *Fila);
+void EnfileiraAterrissar(aeronaveAterrissar *aviaoATERRISSAR, int pos, FilaAterrissar *Fila);
 
-void DesenfileiraAterrisar(FilaAterrissar *Fila, aeronaveAterrissar *Item);
+void DesenfileiraAterrissar(FilaAterrissar *Fila, aeronaveAterrissar *Item);
 
-void Imprimir(FilaAterrissar *fila);
+void ImprimirAterrissagem(FilaAterrissar *fila);
+
+//FUNÇOES PARA FILAS DE DECOLAGEM
+
+void CriarFilaDecolar(FilaDecolar *fila);
+
+int VaziaDecolar(FilaDecolar Fila);
+
+void EnfileiraDecolar(aeronaveDecolar *aviaoDecolar, int pos, FilaDecolar *Fila);
+
+void DesenfileiraDecolar(FilaDecolar *Fila, aeronaveDecolar *Item);
+
+void ImprimirDecolagem(FilaDecolar *fila);
+
 
 #endif //TRABALHO___SIMULADOR_DE_AEROPORTO_TRABALHO_SIMULADOR_DE_AEROPORTO_H

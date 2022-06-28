@@ -12,22 +12,30 @@ int main() {
             ID_aterrissagem = 1, *p_ID_aterrissagem = &ID_aterrissagem, QTDITERAÇOES;
     int controleEspera = 1, *p_controleEspera = &controleEspera;
 
-    FilaAterrissar p_ATERRISSAR1, p_ATERRISSAR2, p_ATERRISSAR3;//VARIAVEIS PARA PISTA DO AEROPORTO
+    //VARIAVEIS PARA PISTAS DE ATERRISSAGEM DO AEROPORTO
+    FilaAterrissar p_ATERRISSAR1, p_ATERRISSAR2, p_ATERRISSAR3;
     FilaAterrissar Pista_1_espera_1, Pista_1_espera_2, Pista_2_espera_1, Pista_2_espera_2; //VARIAVEIS PARA PRATELEIRAS DE PISTAS
     //Criar pistas(filas) do aeroporto
-    CriarFilaAterrisar(&p_ATERRISSAR1);
-    CriarFilaAterrisar(&p_ATERRISSAR2);
-    CriarFilaAterrisar(&p_ATERRISSAR3);
-    CriarFilaAterrisar(&Pista_1_espera_1);
-    CriarFilaAterrisar(&Pista_1_espera_2);
-    CriarFilaAterrisar(&Pista_2_espera_1);
-    CriarFilaAterrisar(&Pista_2_espera_2);
+    CriarFilaAterrissar(&p_ATERRISSAR1);
+    CriarFilaAterrissar(&p_ATERRISSAR2);
+    CriarFilaAterrissar(&p_ATERRISSAR3);
+    CriarFilaAterrissar(&Pista_1_espera_1);
+    CriarFilaAterrissar(&Pista_1_espera_2);
+    CriarFilaAterrissar(&Pista_2_espera_1);
+    CriarFilaAterrissar(&Pista_2_espera_2);
+
+    //VARIAVEIS PARA PISTA DE DECOLAGEM DO AEROPORTO
+    FilaDecolar p_DECOLAR1, p_DECOLAR2, p_DECOLAR3;
+    //Criar pistas(filas) para decolagem do aeroporto
+    CriarFilaDecolar(&p_DECOLAR1);
+    CriarFilaDecolar(&p_DECOLAR2);
+    CriarFilaDecolar(&p_DECOLAR3);
 
     printf("\nDigite a quantidade de iteraçoes que o aeroporto tera: ");
     scanf("%d%*c", &QTDITERAÇOES);
 
     for (int i = 0; i < QTDITERAÇOES; ++i) {
-        printf("\nTEMPO %d ------------------------------------------------------------------", i + 1);
+        printf("\nTEMPO %d ------------------------------------------------------------------\n", i + 1);
         //------------------------   PARTE PARA CRIAR AVIOES ------------------------------------------------------------
         //SORTEIA O NUMERO DE AVIOES A SEREM CRIADOS
         SORTEIO_DECOLAR = rand() % 4;//Sorteio do numero de avioes para decolagem
@@ -45,10 +53,8 @@ int main() {
 
         //apos criar os avioes, iremos passar o vetor para a funçao e depois iremos inserir um item por vez a cada prateleira de espera
         if (SORTEIO_ATERRISSAR != 0) {
-            esperaAterrissar(
-                    aviaoATERRISSAR, SORTEIO_ATERRISSAR, &Pista_1_espera_1,
-                    &Pista_1_espera_2,
-                    &Pista_2_espera_1, &Pista_2_espera_2, p_controleEspera);
+            esperaAterrissar(aviaoATERRISSAR, SORTEIO_ATERRISSAR, &Pista_1_espera_1, &Pista_1_espera_2,
+                             &Pista_2_espera_1, &Pista_2_espera_2, p_controleEspera);
         } else {
             printf("\n\nNenhum avião aterrissando\n\n");
         }
@@ -56,27 +62,31 @@ int main() {
         if (Pista_1_espera_1.tamanhoPista != 0 && Pista_1_espera_2.tamanhoPista && Pista_2_espera_1.tamanhoPista &&
             Pista_2_espera_2.tamanhoPista) {
             //parte onde iremos ver qual é o aviao nao tem reserva de combustivel
-            if ((Vazia(Pista_1_espera_1) == 0) && Pista_1_espera_1.Aviao[Pista_1_espera_1.Frente - 1].quantidadeTempo == 1) {
+            if ((VaziaAterrissar(Pista_1_espera_1) == 0) &&
+                Pista_1_espera_1.Aviao[Pista_1_espera_1.Frente - 1].quantidadeTempo == 1) {
 
                 emergencia(&p_ATERRISSAR3, &Pista_1_espera_1);
 
-            } else if ((Vazia(Pista_1_espera_2) == 0) && Pista_1_espera_2.Aviao[Pista_1_espera_2.Frente - 1].quantidadeTempo == 1) {
+            } else if ((VaziaAterrissar(Pista_1_espera_2) == 0) &&
+                       Pista_1_espera_2.Aviao[Pista_1_espera_2.Frente - 1].quantidadeTempo == 1) {
 
                 emergencia(&p_ATERRISSAR3, &Pista_1_espera_2);
 
-            } else if ((Vazia(Pista_2_espera_1) == 0) && Pista_2_espera_1.Aviao[Pista_2_espera_1.Frente - 1].quantidadeTempo == 1) {
+            } else if ((VaziaAterrissar(Pista_2_espera_1) == 0) &&
+                       Pista_2_espera_1.Aviao[Pista_2_espera_1.Frente - 1].quantidadeTempo == 1) {
 
                 emergencia(&p_ATERRISSAR3, &Pista_2_espera_1);
 
 
-            } else if ((Vazia(Pista_2_espera_2) == 0) && Pista_2_espera_2.Aviao[Pista_2_espera_2.Frente - 1].quantidadeTempo == 1) {
+            } else if ((VaziaAterrissar(Pista_2_espera_2) == 0) &&
+                       Pista_2_espera_2.Aviao[Pista_2_espera_2.Frente - 1].quantidadeTempo == 1) {
 
                 emergencia(&p_ATERRISSAR3, &Pista_2_espera_2);
 
-            }else
+            } else
 
-            //parte onde iremos ver qual é o aviao com menor tempo de combustivel
-            if ((Vazia(Pista_1_espera_1) == 0) &&
+                //parte onde iremos ver qual é o aviao com menor tempo de combustivel
+            if ((VaziaAterrissar(Pista_1_espera_1) == 0) &&
                 ((Pista_1_espera_1.Aviao[Pista_1_espera_1.Frente - 1].quantidadeTempo <
                   Pista_1_espera_2.Aviao[Pista_1_espera_2.Frente - 1].quantidadeTempo) &&
                  (Pista_1_espera_1.Aviao[Pista_1_espera_1.Frente - 1].quantidadeTempo <
@@ -87,7 +97,7 @@ int main() {
                 aterrissar(&p_ATERRISSAR1, &p_ATERRISSAR2, &Pista_1_espera_1);
 
 
-            } else if ((Vazia(Pista_1_espera_2) == 0) &&
+            } else if ((VaziaAterrissar(Pista_1_espera_2) == 0) &&
                        ((Pista_1_espera_2.Aviao[Pista_1_espera_2.Frente - 1].quantidadeTempo <
                          Pista_1_espera_1.Aviao[Pista_1_espera_1.Frente - 1].quantidadeTempo) &&
                         (Pista_1_espera_2.Aviao[Pista_1_espera_2.Frente - 1].quantidadeTempo <
@@ -98,7 +108,7 @@ int main() {
                 aterrissar(&p_ATERRISSAR1, &p_ATERRISSAR2, &Pista_1_espera_2);
 
 
-            } else if ((Vazia(Pista_2_espera_1) == 0) &&
+            } else if ((VaziaAterrissar(Pista_2_espera_1) == 0) &&
                        (Pista_2_espera_1.Aviao[Pista_2_espera_1.Frente - 1].quantidadeTempo <
                         Pista_1_espera_1.Aviao[Pista_1_espera_1.Frente - 1].quantidadeTempo) &&
                        (Pista_2_espera_1.Aviao[Pista_2_espera_1.Frente - 1].quantidadeTempo <
@@ -109,7 +119,7 @@ int main() {
                 aterrissar(&p_ATERRISSAR1, &p_ATERRISSAR2, &Pista_2_espera_1);
 
 
-            } else if ((Vazia(Pista_2_espera_2) == 0) &&
+            } else if ((VaziaAterrissar(Pista_2_espera_2) == 0) &&
                        (Pista_2_espera_2.Aviao[Pista_2_espera_2.Frente - 1].quantidadeTempo <
                         Pista_1_espera_1.Aviao[Pista_1_espera_1.Frente - 1].quantidadeTempo) &&
                        (Pista_2_espera_2.Aviao[Pista_2_espera_2.Frente - 1].quantidadeTempo <
@@ -130,13 +140,55 @@ int main() {
             printf("\n\nNenhum avião decolando\n\n");
         }
 
+        /*
+        a) o conteúdo de cada fila;
+        b) o tempo médio de espera para decolagem;
+        c) o tempo médio de espera para aterrissagem;
+        d) o número de aviões que aterrissam sem reserva de combustível.*/
+        //Saida do programa
+
+        //a) o conteúdo de cada fila;
+        printf("\nPateleiras de espera:");
+
+        printf("\nPista 1 - Fila espera 1:");
+        ImprimirAterrissagem(&Pista_1_espera_1);
+
+        printf("\nPista 1 - Fila espera 2:");
+        ImprimirAterrissagem(&Pista_1_espera_2);
+
+        printf("\nPista 2 - Fila espera 1:");
+        ImprimirAterrissagem(&Pista_2_espera_1);
+
+        printf("\nPista 2 - Fila espera 2:");
+        ImprimirAterrissagem(&Pista_2_espera_2);
+
+        //CONTEUDOS DAS PISTAS
+        printf("\nPistas de aterrissagem:");
+
+        printf("\nPista 1:");
+        ImprimirAterrissagem(&p_ATERRISSAR1);
+
+        printf("\nPista 2:");
+        ImprimirAterrissagem(&p_ATERRISSAR2);
+
+        printf("\nPista 3:");
+        ImprimirAterrissagem(&p_ATERRISSAR3);
+
+        //CONTEUDOS DAS PISTAS de decolagem
+
+        printf("\nPistas de decolagem:");
+
+        printf("\nPista 1:");
+        ImprimirAterrissagem();
+
+
     }
 
     /*
-DesenfileiraAterrisar(&fila, &item);
+DesenfileiraAterrissar(&fila, &item);
 
-verifica = Vazia(fila);
-CriarFilaAterrisar(&fila);
+verifica = VaziaAterrissar(fila);
+CriarFilaAterrissar(&fila);
 printf("\nfila esvaziada.\n");
 */
 
