@@ -5,8 +5,7 @@
 
 #include "Trabalho - Simulador de Aeroporto.h"
 
-//----------------FUNçoes para FILAS
-
+//************************    FUNÇOES PARA FILAS DE ATERRISSAGEM  ***********************************************
 
 void CriarFilaAterrissar(FilaAterrissar *Fila) {
     Fila->Frente = 1;
@@ -17,7 +16,6 @@ void CriarFilaAterrissar(FilaAterrissar *Fila) {
 int VaziaAterrissar(FilaAterrissar Fila) { //retorna 0 se estiver vazia
     return (Fila.Frente == Fila.Tras);
 }
-
 
 void EnfileiraAterrissar(aeronaveAterrissar *aviaoATERRISSAR, int pos, FilaAterrissar *Fila) {
     if (Fila->Tras % MAXTAMFILAS + 1 == Fila->Frente) {}
@@ -43,12 +41,12 @@ void ImprimirAterrissagem(FilaAterrissar *fila) {
     }
 }
 
-//funçao para aterrisar avioes
+//funçao para fila de espera para aterrissar avioes
 
 void esperaAterrissar(aeronaveAterrissar *aviaoATERRISSAR, int SORTEIO_ATERRISSAR,
                       FilaAterrissar *Pista_1_espera_1, FilaAterrissar *Pista_1_espera_2,
                       FilaAterrissar *Pista_2_espera_1, FilaAterrissar *Pista_2_espera_2,
-                      int *p_controleEspera) {
+                      int *p_controleAterrisagem) {
 
 
 //IRA COLOCAR UM AVIAO DE CADA VEZ NA PRATELEIRA QUE TIVER MENOR NUMERO
@@ -92,31 +90,31 @@ void esperaAterrissar(aeronaveAterrissar *aviaoATERRISSAR, int SORTEIO_ATERRISSA
              printf("\nPrateleira 2 PISTA 2\n");
          }*/
 
-        if (*(p_controleEspera) == 1) {
-            *(p_controleEspera) = 2;//altera a variavel auxiliar para adicionar na posicao seguinte
+        if (*(p_controleAterrisagem) == 1) {
+            *(p_controleAterrisagem) = 2;//altera a variavel auxiliar para adicionar na posicao seguinte
             //acrescenta o aviao atual a prateleira 1 da pista 1
             EnfileiraAterrissar(aviaoATERRISSAR, i, Pista_1_espera_1);
             ImprimirAterrissagem(Pista_1_espera_1);
             printf("\nPrateleira 1 PISTA 1");
-        } else if (*(p_controleEspera) == 2) {
+        } else if (*(p_controleAterrisagem) == 2) {
 
-            *(p_controleEspera) = 3;//altera a variavel auxiliar para adicionar na posicao seguinte
+            *(p_controleAterrisagem) = 3;//altera a variavel auxiliar para adicionar na posicao seguinte
             //acrescenta o aviao atual a prateleira 2 da pista 1
             EnfileiraAterrissar(aviaoATERRISSAR, i, Pista_1_espera_2);
             ImprimirAterrissagem(Pista_1_espera_2);
             printf("\nPrateleira 2 PISTA 1");
 
-        } else if (*(p_controleEspera) == 3) {
+        } else if (*(p_controleAterrisagem) == 3) {
 
-            *(p_controleEspera) = 4;//altera a variavel auxiliar para adicionar na posicao seguinte
+            *(p_controleAterrisagem) = 4;//altera a variavel auxiliar para adicionar na posicao seguinte
             //acrescenta o aviao atual a prateleira 1 da pista 2
             EnfileiraAterrissar(aviaoATERRISSAR, i, Pista_2_espera_1);
             ImprimirAterrissagem(Pista_2_espera_1);
             printf("\nPrateleira 1 PISTA 2");
 
-        } else if (*(p_controleEspera) == 4) {
+        } else if (*(p_controleAterrisagem) == 4) {
 
-            *(p_controleEspera) = 1;//altera a variavel auxiliar para adicionar na posicao seguinte
+            *(p_controleAterrisagem) = 1;//altera a variavel auxiliar para adicionar na posicao seguinte
             //acrescenta o aviao atual a prateleira 2 da pista 2
             EnfileiraAterrissar(aviaoATERRISSAR, i, Pista_2_espera_2);
             ImprimirAterrissagem(Pista_2_espera_2);
@@ -129,6 +127,7 @@ void esperaAterrissar(aeronaveAterrissar *aviaoATERRISSAR, int SORTEIO_ATERRISSA
 
 }
 
+//funçao para retirar os avioes da fila de espera e colocar eles na fila de entrada
 void aterrissar(FilaAterrissar *p_ATERRISSAR1, FilaAterrissar *p_ATERRISSAR2, FilaAterrissar *filaEspera) {
 
     if (p_ATERRISSAR1->tamanhoPista < p_ATERRISSAR2->tamanhoPista) {

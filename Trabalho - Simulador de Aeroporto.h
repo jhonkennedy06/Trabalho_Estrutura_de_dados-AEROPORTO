@@ -1,14 +1,12 @@
 #ifndef TRABALHO___SIMULADOR_DE_AEROPORTO_TRABALHO_SIMULADOR_DE_AEROPORTO_H
 #define TRABALHO___SIMULADOR_DE_AEROPORTO_TRABALHO_SIMULADOR_DE_AEROPORTO_H
 
-#define MAXTAMFILAS 1000 //TAMANHO MAXIMO PARA FILAS
-
-
-//TIPOS DE DADOS PARA FILAS
+#define MAXTAMFILAS 100000 //TAMANHO MAXIMO PARA FILAS
 
 typedef int Apontadores;
 
-//--------------------- TIPO DADOS PARA FILA ATERRISSAR
+//************************    TIPO DADOS PARA FILA ATERRISSAR  ***********************************************
+
 typedef struct {
     int ID, quantidadeTempo;
 } aeronaveAterrissar;//TIPO PARA AVIAO ATERRISANDO
@@ -19,9 +17,8 @@ typedef struct {
     int tamanhoPista;
     Apontadores Frente, Tras;
 } FilaAterrissar;
-//----------------------------------------------------------
 
-//--------------------- TIPO DADOS PARA FILA DECOLAGEM ----------------------------------------------------------
+//************************    TIPO DADOS PARA FILA DECOLAGEM  ***********************************************
 
 
 typedef struct {
@@ -32,38 +29,12 @@ typedef struct {
     aeronaveDecolar Aviao[MAXTAMFILAS];
     Apontadores Frente, Tras;
 } FilaDecolar;
-//----------------------------------------------------------
 
-//funçoes para controledo aeroporto77 ----------------------------------------
 
-void esperaAterrissar(aeronaveAterrissar *aviaoATERRISSAR, int SORTEIO_ATERRISSAR,
-                      FilaAterrissar *Pista_1_espera_1, FilaAterrissar *Pista_1_espera_2,
-                      FilaAterrissar *Pista_2_espera_1, FilaAterrissar *Pista_2_espera_2,
-                      int *p_controleEspera);
-
-void aterrissar(FilaAterrissar *p_ATERRISSAR1, FilaAterrissar *p_ATERRISSAR2,
-                FilaAterrissar *filaEspera);
-
-void emergencia(FilaAterrissar *PISTA_ATERRISSAR3, FilaAterrissar *filaEspera);
-
-void decolar();
+//************************    FUNÇOES PARA FILAS DE ATERRISSAGEM  ***********************************************
 
 //sortear dados de aviao aterrissando
 void criarAviaoAterrissando(aeronaveAterrissar *aviaoATERRISSAR, int SORTEIO, int *p_ID_aterrissagem);
-
-//sortear dados de aviao decolando
-void criarAviaoDecolando(aeronaveDecolar *aviaoDECOLAR, int SORTEIO, int *p_ID_decolagem);
-
-
-
-//Tipos de dados ------------------------------------------------------------
-
-
-
-// Tipo de dados e funçoes das filas
-
-
-//FUNÇOES PARA FILAS DE ATERRISSAGEM
 
 void CriarFilaAterrissar(FilaAterrissar *Fila);
 
@@ -75,7 +46,21 @@ void DesenfileiraAterrissar(FilaAterrissar *Fila, aeronaveAterrissar *Item);
 
 void ImprimirAterrissagem(FilaAterrissar *fila);
 
-//FUNÇOES PARA FILAS DE DECOLAGEM
+void esperaAterrissar(aeronaveAterrissar *aviaoATERRISSAR, int SORTEIO_ATERRISSAR,
+                      FilaAterrissar *Pista_1_espera_1, FilaAterrissar *Pista_1_espera_2,
+                      FilaAterrissar *Pista_2_espera_1, FilaAterrissar *Pista_2_espera_2,
+                      int *p_controleAterrisagem);
+
+void aterrissar(FilaAterrissar *p_ATERRISSAR1, FilaAterrissar *p_ATERRISSAR2,
+                FilaAterrissar *filaEspera);
+
+void emergencia(FilaAterrissar *PISTA_ATERRISSAR3, FilaAterrissar *filaEspera);
+
+
+//************************    FUNÇOES PARA FILAS DE DECOLAGEM  ***********************************************
+
+//sortear dados de aviao decolando
+void criarAviaoDecolando(aeronaveDecolar *aviaoDECOLAR, int SORTEIO, int *p_ID_decolagem);
 
 void CriarFilaDecolar(FilaDecolar *fila);
 
@@ -87,5 +72,8 @@ void DesenfileiraDecolar(FilaDecolar *Fila, aeronaveDecolar *Item);
 
 void ImprimirDecolagem(FilaDecolar *fila);
 
+void decolar(aeronaveDecolar *aviaoDECOLAR, int SORTEIO_DECOLAR,
+             FilaDecolar *PistaDecolar1, FilaDecolar *PistaDecolar2, FilaDecolar *PistaDecolar3,
+             int *p_controleDecolar);
 
 #endif //TRABALHO___SIMULADOR_DE_AEROPORTO_TRABALHO_SIMULADOR_DE_AEROPORTO_H

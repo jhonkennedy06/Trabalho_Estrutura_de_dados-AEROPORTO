@@ -10,7 +10,7 @@ int main() {
 //ID_decolagem é par e
     int SORTEIO_DECOLAR, SORTEIO_ATERRISSAR, ID_decolagem = 0, *p_ID_decolagem = &ID_decolagem,
             ID_aterrissagem = 1, *p_ID_aterrissagem = &ID_aterrissagem, QTDITERAÇOES;
-    int controleEspera = 1, *p_controleEspera = &controleEspera;
+    int controleAterrissar = 1, controleDecolar = 1, *p_controleAterrissar = &controleAterrissar, *p_controleDecolar = &controleDecolar;
 
     //VARIAVEIS PARA PISTAS DE ATERRISSAGEM DO AEROPORTO
     FilaAterrissar p_ATERRISSAR1, p_ATERRISSAR2, p_ATERRISSAR3;
@@ -54,7 +54,7 @@ int main() {
         //apos criar os avioes, iremos passar o vetor para a funçao e depois iremos inserir um item por vez a cada prateleira de espera
         if (SORTEIO_ATERRISSAR != 0) {
             esperaAterrissar(aviaoATERRISSAR, SORTEIO_ATERRISSAR, &Pista_1_espera_1, &Pista_1_espera_2,
-                             &Pista_2_espera_1, &Pista_2_espera_2, p_controleEspera);
+                             &Pista_2_espera_1, &Pista_2_espera_2, p_controleAterrissar);
         } else {
             printf("\n\nNenhum avião aterrissando\n\n");
         }
@@ -135,7 +135,7 @@ int main() {
 
         //apos criar os avioes, iremos passar o vetor para a funçao e depois iremos inserir um item por vez a cada prateleira de espera
         if (SORTEIO_DECOLAR != 0) {
-            decolar();
+            decolar(aviaoDECOLAR, SORTEIO_DECOLAR, &p_DECOLAR1, &p_DECOLAR2, &p_DECOLAR3, p_controleDecolar);
         } else {
             printf("\n\nNenhum avião decolando\n\n");
         }
@@ -163,23 +163,29 @@ int main() {
         ImprimirAterrissagem(&Pista_2_espera_2);
 
         //CONTEUDOS DAS PISTAS
-        printf("\nPistas de aterrissagem:");
+        printf("\n\nPistas de aterrissagem:");
 
-        printf("\nPista 1:");
+        printf("\nPista de aterrissagem 1:");
         ImprimirAterrissagem(&p_ATERRISSAR1);
 
-        printf("\nPista 2:");
+        printf("\nPista de aterrissagem 2:");
         ImprimirAterrissagem(&p_ATERRISSAR2);
 
-        printf("\nPista 3:");
+        printf("\nPista de aterrissagem 3:");
         ImprimirAterrissagem(&p_ATERRISSAR3);
 
         //CONTEUDOS DAS PISTAS de decolagem
 
-        printf("\nPistas de decolagem:");
+        printf("\n\nPistas de decolagem:");
 
-        printf("\nPista 1:");
-        ImprimirAterrissagem();
+        printf("\nPista de decolagem 1:");
+        ImprimirDecolagem(&p_DECOLAR1);
+
+        printf("\nPista de decolagem 2:");
+        ImprimirDecolagem(&p_DECOLAR2);
+
+        printf("\nPista de decolagem 3:");
+        ImprimirDecolagem(&p_DECOLAR3);
 
 
     }

@@ -1,4 +1,4 @@
-# Install script for directory: /home/jhonstar69/CLionProjects/Trabalho - Simulador de Aeroporto
+# Install script for directory: /home/jhonstar69/CLionProjects/Aeroporto versoes antigas/versao 0.4
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -50,5 +50,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/jhonstar69/CLionProjects/Trabalho - Simulador de Aeroporto/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/jhonstar69/CLionProjects/Aeroporto versoes antigas/versao 0.4/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
