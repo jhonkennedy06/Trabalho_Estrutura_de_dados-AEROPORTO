@@ -1,7 +1,5 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/Trabalho___Simulador_de_Aeroporto.dir/ATERRISSAR.c.o"
-  "CMakeFiles/Trabalho___Simulador_de_Aeroporto.dir/CriarAviao.c.o"
-  "CMakeFiles/Trabalho___Simulador_de_Aeroporto.dir/DECOLAR.c.o"
+  "CMakeFiles/Trabalho___Simulador_de_Aeroporto.dir/funcoes.c.o"
   "CMakeFiles/Trabalho___Simulador_de_Aeroporto.dir/main.c.o"
   "Trabalho___Simulador_de_Aeroporto"
   "Trabalho___Simulador_de_Aeroporto.pdb"

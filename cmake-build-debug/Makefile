@@ -57,10 +57,10 @@ RM = /snap/clion/190/bin/cmake/linux/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "/home/jhonstar69/CLionProjects/Aeroporto versoes antigas/versao 0.4"
+CMAKE_SOURCE_DIR = "/home/jhonstar69/CLionProjects/Aeroporto versoes antigas/versao 0.5"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "/home/jhonstar69/CLionProjects/Aeroporto versoes antigas/versao 0.4/cmake-build-debug"
+CMAKE_BINARY_DIR = "/home/jhonstar69/CLionProjects/Aeroporto versoes antigas/versao 0.5/cmake-build-debug"
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -87,9 +87,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start "/home/jhonstar69/CLionProjects/Aeroporto versoes antigas/versao 0.4/cmake-build-debug/CMakeFiles" "/home/jhonstar69/CLionProjects/Aeroporto versoes antigas/versao 0.4/cmake-build-debug//CMakeFiles/progress.marks"
+	$(CMAKE_COMMAND) -E cmake_progress_start "/home/jhonstar69/CLionProjects/Aeroporto versoes antigas/versao 0.5/cmake-build-debug/CMakeFiles" "/home/jhonstar69/CLionProjects/Aeroporto versoes antigas/versao 0.5/cmake-build-debug//CMakeFiles/progress.marks"
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start "/home/jhonstar69/CLionProjects/Aeroporto versoes antigas/versao 0.4/cmake-build-debug/CMakeFiles" 0
+	$(CMAKE_COMMAND) -E cmake_progress_start "/home/jhonstar69/CLionProjects/Aeroporto versoes antigas/versao 0.5/cmake-build-debug/CMakeFiles" 0
 .PHONY : all
 
 # The main clean target
@@ -129,77 +129,29 @@ Trabalho___Simulador_de_Aeroporto/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Trabalho___Simulador_de_Aeroporto.dir/build.make CMakeFiles/Trabalho___Simulador_de_Aeroporto.dir/build
 .PHONY : Trabalho___Simulador_de_Aeroporto/fast
 
-ATERRISSAR.o: ATERRISSAR.c.o
-.PHONY : ATERRISSAR.o
+funcoes.o: funcoes.c.o
+.PHONY : funcoes.o
 
 # target to build an object file
-ATERRISSAR.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Trabalho___Simulador_de_Aeroporto.dir/build.make CMakeFiles/Trabalho___Simulador_de_Aeroporto.dir/ATERRISSAR.c.o
-.PHONY : ATERRISSAR.c.o
+funcoes.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Trabalho___Simulador_de_Aeroporto.dir/build.make CMakeFiles/Trabalho___Simulador_de_Aeroporto.dir/funcoes.c.o
+.PHONY : funcoes.c.o
 
-ATERRISSAR.i: ATERRISSAR.c.i
-.PHONY : ATERRISSAR.i
-
-# target to preprocess a source file
-ATERRISSAR.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Trabalho___Simulador_de_Aeroporto.dir/build.make CMakeFiles/Trabalho___Simulador_de_Aeroporto.dir/ATERRISSAR.c.i
-.PHONY : ATERRISSAR.c.i
-
-ATERRISSAR.s: ATERRISSAR.c.s
-.PHONY : ATERRISSAR.s
-
-# target to generate assembly for a file
-ATERRISSAR.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Trabalho___Simulador_de_Aeroporto.dir/build.make CMakeFiles/Trabalho___Simulador_de_Aeroporto.dir/ATERRISSAR.c.s
-.PHONY : ATERRISSAR.c.s
-
-CriarAviao.o: CriarAviao.c.o
-.PHONY : CriarAviao.o
-
-# target to build an object file
-CriarAviao.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Trabalho___Simulador_de_Aeroporto.dir/build.make CMakeFiles/Trabalho___Simulador_de_Aeroporto.dir/CriarAviao.c.o
-.PHONY : CriarAviao.c.o
-
-CriarAviao.i: CriarAviao.c.i
-.PHONY : CriarAviao.i
+funcoes.i: funcoes.c.i
+.PHONY : funcoes.i
 
 # target to preprocess a source file
-CriarAviao.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Trabalho___Simulador_de_Aeroporto.dir/build.make CMakeFiles/Trabalho___Simulador_de_Aeroporto.dir/CriarAviao.c.i
-.PHONY : CriarAviao.c.i
+funcoes.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Trabalho___Simulador_de_Aeroporto.dir/build.make CMakeFiles/Trabalho___Simulador_de_Aeroporto.dir/funcoes.c.i
+.PHONY : funcoes.c.i
 
-CriarAviao.s: CriarAviao.c.s
-.PHONY : CriarAviao.s
-
-# target to generate assembly for a file
-CriarAviao.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Trabalho___Simulador_de_Aeroporto.dir/build.make CMakeFiles/Trabalho___Simulador_de_Aeroporto.dir/CriarAviao.c.s
-.PHONY : CriarAviao.c.s
-
-DECOLAR.o: DECOLAR.c.o
-.PHONY : DECOLAR.o
-
-# target to build an object file
-DECOLAR.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Trabalho___Simulador_de_Aeroporto.dir/build.make CMakeFiles/Trabalho___Simulador_de_Aeroporto.dir/DECOLAR.c.o
-.PHONY : DECOLAR.c.o
-
-DECOLAR.i: DECOLAR.c.i
-.PHONY : DECOLAR.i
-
-# target to preprocess a source file
-DECOLAR.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Trabalho___Simulador_de_Aeroporto.dir/build.make CMakeFiles/Trabalho___Simulador_de_Aeroporto.dir/DECOLAR.c.i
-.PHONY : DECOLAR.c.i
-
-DECOLAR.s: DECOLAR.c.s
-.PHONY : DECOLAR.s
+funcoes.s: funcoes.c.s
+.PHONY : funcoes.s
 
 # target to generate assembly for a file
-DECOLAR.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Trabalho___Simulador_de_Aeroporto.dir/build.make CMakeFiles/Trabalho___Simulador_de_Aeroporto.dir/DECOLAR.c.s
-.PHONY : DECOLAR.c.s
+funcoes.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Trabalho___Simulador_de_Aeroporto.dir/build.make CMakeFiles/Trabalho___Simulador_de_Aeroporto.dir/funcoes.c.s
+.PHONY : funcoes.c.s
 
 main.o: main.c.o
 .PHONY : main.o
@@ -234,15 +186,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... Trabalho___Simulador_de_Aeroporto"
-	@echo "... ATERRISSAR.o"
-	@echo "... ATERRISSAR.i"
-	@echo "... ATERRISSAR.s"
-	@echo "... CriarAviao.o"
-	@echo "... CriarAviao.i"
-	@echo "... CriarAviao.s"
-	@echo "... DECOLAR.o"
-	@echo "... DECOLAR.i"
-	@echo "... DECOLAR.s"
+	@echo "... funcoes.o"
+	@echo "... funcoes.i"
+	@echo "... funcoes.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

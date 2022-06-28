@@ -53,10 +53,10 @@ RM = /snap/clion/190/bin/cmake/linux/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "/home/jhonstar69/CLionProjects/Aeroporto versoes antigas/versao 0.4"
+CMAKE_SOURCE_DIR = "/home/jhonstar69/CLionProjects/Aeroporto versoes antigas/versao 0.5"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "/home/jhonstar69/CLionProjects/Aeroporto versoes antigas/versao 0.4/cmake-build-debug"
+CMAKE_BINARY_DIR = "/home/jhonstar69/CLionProjects/Aeroporto versoes antigas/versao 0.5/cmake-build-debug"
 
 # Include any dependencies generated for this target.
 include CMakeFiles/Trabalho___Simulador_de_Aeroporto.dir/depend.make
@@ -68,73 +68,43 @@ include CMakeFiles/Trabalho___Simulador_de_Aeroporto.dir/flags.make
 
 CMakeFiles/Trabalho___Simulador_de_Aeroporto.dir/main.c.o: CMakeFiles/Trabalho___Simulador_de_Aeroporto.dir/flags.make
 CMakeFiles/Trabalho___Simulador_de_Aeroporto.dir/main.c.o: ../main.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/jhonstar69/CLionProjects/Aeroporto versoes antigas/versao 0.4/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/Trabalho___Simulador_de_Aeroporto.dir/main.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Trabalho___Simulador_de_Aeroporto.dir/main.c.o -c "/home/jhonstar69/CLionProjects/Aeroporto versoes antigas/versao 0.4/main.c"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/jhonstar69/CLionProjects/Aeroporto versoes antigas/versao 0.5/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/Trabalho___Simulador_de_Aeroporto.dir/main.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Trabalho___Simulador_de_Aeroporto.dir/main.c.o -c "/home/jhonstar69/CLionProjects/Aeroporto versoes antigas/versao 0.5/main.c"
 
 CMakeFiles/Trabalho___Simulador_de_Aeroporto.dir/main.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Trabalho___Simulador_de_Aeroporto.dir/main.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "/home/jhonstar69/CLionProjects/Aeroporto versoes antigas/versao 0.4/main.c" > CMakeFiles/Trabalho___Simulador_de_Aeroporto.dir/main.c.i
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "/home/jhonstar69/CLionProjects/Aeroporto versoes antigas/versao 0.5/main.c" > CMakeFiles/Trabalho___Simulador_de_Aeroporto.dir/main.c.i
 
 CMakeFiles/Trabalho___Simulador_de_Aeroporto.dir/main.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Trabalho___Simulador_de_Aeroporto.dir/main.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "/home/jhonstar69/CLionProjects/Aeroporto versoes antigas/versao 0.4/main.c" -o CMakeFiles/Trabalho___Simulador_de_Aeroporto.dir/main.c.s
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "/home/jhonstar69/CLionProjects/Aeroporto versoes antigas/versao 0.5/main.c" -o CMakeFiles/Trabalho___Simulador_de_Aeroporto.dir/main.c.s
 
-CMakeFiles/Trabalho___Simulador_de_Aeroporto.dir/CriarAviao.c.o: CMakeFiles/Trabalho___Simulador_de_Aeroporto.dir/flags.make
-CMakeFiles/Trabalho___Simulador_de_Aeroporto.dir/CriarAviao.c.o: ../CriarAviao.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/jhonstar69/CLionProjects/Aeroporto versoes antigas/versao 0.4/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/Trabalho___Simulador_de_Aeroporto.dir/CriarAviao.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Trabalho___Simulador_de_Aeroporto.dir/CriarAviao.c.o -c "/home/jhonstar69/CLionProjects/Aeroporto versoes antigas/versao 0.4/CriarAviao.c"
+CMakeFiles/Trabalho___Simulador_de_Aeroporto.dir/funcoes.c.o: CMakeFiles/Trabalho___Simulador_de_Aeroporto.dir/flags.make
+CMakeFiles/Trabalho___Simulador_de_Aeroporto.dir/funcoes.c.o: ../funcoes.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/jhonstar69/CLionProjects/Aeroporto versoes antigas/versao 0.5/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/Trabalho___Simulador_de_Aeroporto.dir/funcoes.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Trabalho___Simulador_de_Aeroporto.dir/funcoes.c.o -c "/home/jhonstar69/CLionProjects/Aeroporto versoes antigas/versao 0.5/funcoes.c"
 
-CMakeFiles/Trabalho___Simulador_de_Aeroporto.dir/CriarAviao.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Trabalho___Simulador_de_Aeroporto.dir/CriarAviao.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "/home/jhonstar69/CLionProjects/Aeroporto versoes antigas/versao 0.4/CriarAviao.c" > CMakeFiles/Trabalho___Simulador_de_Aeroporto.dir/CriarAviao.c.i
+CMakeFiles/Trabalho___Simulador_de_Aeroporto.dir/funcoes.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Trabalho___Simulador_de_Aeroporto.dir/funcoes.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "/home/jhonstar69/CLionProjects/Aeroporto versoes antigas/versao 0.5/funcoes.c" > CMakeFiles/Trabalho___Simulador_de_Aeroporto.dir/funcoes.c.i
 
-CMakeFiles/Trabalho___Simulador_de_Aeroporto.dir/CriarAviao.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Trabalho___Simulador_de_Aeroporto.dir/CriarAviao.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "/home/jhonstar69/CLionProjects/Aeroporto versoes antigas/versao 0.4/CriarAviao.c" -o CMakeFiles/Trabalho___Simulador_de_Aeroporto.dir/CriarAviao.c.s
-
-CMakeFiles/Trabalho___Simulador_de_Aeroporto.dir/ATERRISSAR.c.o: CMakeFiles/Trabalho___Simulador_de_Aeroporto.dir/flags.make
-CMakeFiles/Trabalho___Simulador_de_Aeroporto.dir/ATERRISSAR.c.o: ../ATERRISSAR.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/jhonstar69/CLionProjects/Aeroporto versoes antigas/versao 0.4/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/Trabalho___Simulador_de_Aeroporto.dir/ATERRISSAR.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Trabalho___Simulador_de_Aeroporto.dir/ATERRISSAR.c.o -c "/home/jhonstar69/CLionProjects/Aeroporto versoes antigas/versao 0.4/ATERRISSAR.c"
-
-CMakeFiles/Trabalho___Simulador_de_Aeroporto.dir/ATERRISSAR.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Trabalho___Simulador_de_Aeroporto.dir/ATERRISSAR.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "/home/jhonstar69/CLionProjects/Aeroporto versoes antigas/versao 0.4/ATERRISSAR.c" > CMakeFiles/Trabalho___Simulador_de_Aeroporto.dir/ATERRISSAR.c.i
-
-CMakeFiles/Trabalho___Simulador_de_Aeroporto.dir/ATERRISSAR.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Trabalho___Simulador_de_Aeroporto.dir/ATERRISSAR.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "/home/jhonstar69/CLionProjects/Aeroporto versoes antigas/versao 0.4/ATERRISSAR.c" -o CMakeFiles/Trabalho___Simulador_de_Aeroporto.dir/ATERRISSAR.c.s
-
-CMakeFiles/Trabalho___Simulador_de_Aeroporto.dir/DECOLAR.c.o: CMakeFiles/Trabalho___Simulador_de_Aeroporto.dir/flags.make
-CMakeFiles/Trabalho___Simulador_de_Aeroporto.dir/DECOLAR.c.o: ../DECOLAR.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/jhonstar69/CLionProjects/Aeroporto versoes antigas/versao 0.4/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/Trabalho___Simulador_de_Aeroporto.dir/DECOLAR.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Trabalho___Simulador_de_Aeroporto.dir/DECOLAR.c.o -c "/home/jhonstar69/CLionProjects/Aeroporto versoes antigas/versao 0.4/DECOLAR.c"
-
-CMakeFiles/Trabalho___Simulador_de_Aeroporto.dir/DECOLAR.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Trabalho___Simulador_de_Aeroporto.dir/DECOLAR.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "/home/jhonstar69/CLionProjects/Aeroporto versoes antigas/versao 0.4/DECOLAR.c" > CMakeFiles/Trabalho___Simulador_de_Aeroporto.dir/DECOLAR.c.i
-
-CMakeFiles/Trabalho___Simulador_de_Aeroporto.dir/DECOLAR.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Trabalho___Simulador_de_Aeroporto.dir/DECOLAR.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "/home/jhonstar69/CLionProjects/Aeroporto versoes antigas/versao 0.4/DECOLAR.c" -o CMakeFiles/Trabalho___Simulador_de_Aeroporto.dir/DECOLAR.c.s
+CMakeFiles/Trabalho___Simulador_de_Aeroporto.dir/funcoes.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Trabalho___Simulador_de_Aeroporto.dir/funcoes.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "/home/jhonstar69/CLionProjects/Aeroporto versoes antigas/versao 0.5/funcoes.c" -o CMakeFiles/Trabalho___Simulador_de_Aeroporto.dir/funcoes.c.s
 
 # Object files for target Trabalho___Simulador_de_Aeroporto
 Trabalho___Simulador_de_Aeroporto_OBJECTS = \
 "CMakeFiles/Trabalho___Simulador_de_Aeroporto.dir/main.c.o" \
-"CMakeFiles/Trabalho___Simulador_de_Aeroporto.dir/CriarAviao.c.o" \
-"CMakeFiles/Trabalho___Simulador_de_Aeroporto.dir/ATERRISSAR.c.o" \
-"CMakeFiles/Trabalho___Simulador_de_Aeroporto.dir/DECOLAR.c.o"
+"CMakeFiles/Trabalho___Simulador_de_Aeroporto.dir/funcoes.c.o"
 
 # External object files for target Trabalho___Simulador_de_Aeroporto
 Trabalho___Simulador_de_Aeroporto_EXTERNAL_OBJECTS =
 
 Trabalho___Simulador_de_Aeroporto: CMakeFiles/Trabalho___Simulador_de_Aeroporto.dir/main.c.o
-Trabalho___Simulador_de_Aeroporto: CMakeFiles/Trabalho___Simulador_de_Aeroporto.dir/CriarAviao.c.o
-Trabalho___Simulador_de_Aeroporto: CMakeFiles/Trabalho___Simulador_de_Aeroporto.dir/ATERRISSAR.c.o
-Trabalho___Simulador_de_Aeroporto: CMakeFiles/Trabalho___Simulador_de_Aeroporto.dir/DECOLAR.c.o
+Trabalho___Simulador_de_Aeroporto: CMakeFiles/Trabalho___Simulador_de_Aeroporto.dir/funcoes.c.o
 Trabalho___Simulador_de_Aeroporto: CMakeFiles/Trabalho___Simulador_de_Aeroporto.dir/build.make
 Trabalho___Simulador_de_Aeroporto: CMakeFiles/Trabalho___Simulador_de_Aeroporto.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="/home/jhonstar69/CLionProjects/Aeroporto versoes antigas/versao 0.4/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_5) "Linking C executable Trabalho___Simulador_de_Aeroporto"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="/home/jhonstar69/CLionProjects/Aeroporto versoes antigas/versao 0.5/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Linking C executable Trabalho___Simulador_de_Aeroporto"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/Trabalho___Simulador_de_Aeroporto.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -146,6 +116,6 @@ CMakeFiles/Trabalho___Simulador_de_Aeroporto.dir/clean:
 .PHONY : CMakeFiles/Trabalho___Simulador_de_Aeroporto.dir/clean
 
 CMakeFiles/Trabalho___Simulador_de_Aeroporto.dir/depend:
-	cd "/home/jhonstar69/CLionProjects/Aeroporto versoes antigas/versao 0.4/cmake-build-debug" && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" "/home/jhonstar69/CLionProjects/Aeroporto versoes antigas/versao 0.4" "/home/jhonstar69/CLionProjects/Aeroporto versoes antigas/versao 0.4" "/home/jhonstar69/CLionProjects/Aeroporto versoes antigas/versao 0.4/cmake-build-debug" "/home/jhonstar69/CLionProjects/Aeroporto versoes antigas/versao 0.4/cmake-build-debug" "/home/jhonstar69/CLionProjects/Aeroporto versoes antigas/versao 0.4/cmake-build-debug/CMakeFiles/Trabalho___Simulador_de_Aeroporto.dir/DependInfo.cmake" --color=$(COLOR)
+	cd "/home/jhonstar69/CLionProjects/Aeroporto versoes antigas/versao 0.5/cmake-build-debug" && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" "/home/jhonstar69/CLionProjects/Aeroporto versoes antigas/versao 0.5" "/home/jhonstar69/CLionProjects/Aeroporto versoes antigas/versao 0.5" "/home/jhonstar69/CLionProjects/Aeroporto versoes antigas/versao 0.5/cmake-build-debug" "/home/jhonstar69/CLionProjects/Aeroporto versoes antigas/versao 0.5/cmake-build-debug" "/home/jhonstar69/CLionProjects/Aeroporto versoes antigas/versao 0.5/cmake-build-debug/CMakeFiles/Trabalho___Simulador_de_Aeroporto.dir/DependInfo.cmake" --color=$(COLOR)
 .PHONY : CMakeFiles/Trabalho___Simulador_de_Aeroporto.dir/depend
 
