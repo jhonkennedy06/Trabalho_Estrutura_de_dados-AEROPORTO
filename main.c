@@ -460,67 +460,45 @@ int main() {
 
         //****************************************************************************************
 
+
+        if (n_aviao_aterrissar != 0) {
+            //sessao para calcular tempo medio de aterrissagem
+            media_aterrisagem = (cont_tmp_espera / n_aviao_aterrissar);
+        }
+        if (n_aviao_decolagem != 0) {
+            //sessao para calcular tempo medio de decolagem
+            media_decolagem = (cont_tmp_decolagem / n_aviao_decolagem);
+        }
+
+        //a) o conteúdo de cada fila
+
+        printf("\nFila espera 1:");//fila espera
+        Imprimir(&espera_1);
+
+        printf("\nFila espera 2:");//fila espera
+        Imprimir(&espera_2);
+
+        printf("\nFila espera 3:");//fila espera
+        Imprimir(&espera_3);
+
+        printf("\nFila espera 4:");//fila espera
+        Imprimir(&espera_4);
+
+        //   printf("\nFila de decolagem:");//fila decolar
+        // Imprimir(&fila_DECOLAR);;
+
+        // b) o tempo médio de espera para decolagem;
+
+        printf("\nTempo médio de espera para decolagem: %.2f", media_decolagem);
+
+        //c) o tempo médio de espera para aterrissagem;
+        printf("\nTempo médio de espera para aterrissagem: %.2f ", media_aterrisagem);
+
+        //d) o número de aviões que aterrissam sem reserva de combustível.*/
+        printf("\nAviões que aterrissam sem reserva de combustível: %d\n\n", SemReserva);
+
     }
 
-    //sessao para calcular tempo medio de aterrissagem
-    media_aterrisagem = (cont_tmp_espera / n_aviao_aterrissar);
-
-    //sessao para calcular tempo medio de aterrissagem
-    media_decolagem = (cont_tmp_decolagem / n_aviao_decolagem);
-
-    /*
-    a) o conteúdo de cada fila;
-    b) o tempo médio de espera para decolagem;
-    c) o tempo médio de espera para aterrissagem;
-    d) o número de aviões que aterrissam sem reserva de combustível.*/
-    //Saida do programa
-    printf("\n\nFIm de controle.\n\n");
-
-    //a) o conteúdo de cada fila;
-    printf("\nPateleiras de espera:");
-
-    printf("\nFila espera 1:");
-    Imprimir(&espera_1);
-
-    printf("\nFila espera 2:");
-    Imprimir(&espera_2);
-
-    printf("\nFila espera 3:");
-    Imprimir(&espera_3);
-
-    printf("\nFila espera 4:");
-    Imprimir(&espera_4);
-
-    //CONTEUDOS DAS PISTAS
-    printf("\n\nPistas de aterrissagem:");
-
-    printf("\nPista 1:");
-    Imprimir(&PISTA1);
-
-    printf("\nPista 2:");
-    Imprimir(&PISTA2);
-
-    printf("\nPista 3:");
-    Imprimir(&PISTA3);
-
-    //CONTEUDOS DAS PISTAS de decolagem
-
-    printf("\n\nPistas de decolagem:");
-
-    printf("\nFila de decolagem:");
-    Imprimir(&fila_DECOLAR);;
-
-    // b) o tempo médio de espera para decolagem;
-
-    printf("Tempo médio de espera para decolagem: %.2f", media_decolagem);
-
-    //c) o tempo médio de espera para aterrissagem;
-    printf("\nTempo médio de espera para aterrissagem: %.2f ", media_aterrisagem);
-
-    //d) o número de aviões que aterrissam sem reserva de combustível.*/
-    printf("\n\nAviões que aterrissam sem reserva de combustível: %d", SemReserva);
-
-    printf("\nPrograma Finalizado com sucesso.\n");
 
     return 0;
 }

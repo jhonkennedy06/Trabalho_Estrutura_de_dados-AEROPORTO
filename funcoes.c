@@ -109,33 +109,33 @@ void esperaAterrissar(aeronave *aviaoATERRISSAR, int SORTEIO_ATERRISSAR,
         if (*(p_controleAterrisagem) == 1) {
             *(p_controleAterrisagem) = 2;//altera a variavel auxiliar para adicionar na posicao seguinte
             //acrescenta o aviao atual a prateleira 1 da pista 1
-            printf("\nEspera 1 ");
+         //   printf("\nEspera 1 ");
             Enfileira(aviaoATERRISSAR, i, espera_1);
-            Imprimir(espera_1);
+         //   Imprimir(espera_1);
 
         } else if (*(p_controleAterrisagem) == 2) {
 
             *(p_controleAterrisagem) = 3;//altera a variavel auxiliar para adicionar na posicao seguinte
             //acrescenta o aviao atual a prateleira 2 da pista 1
-            printf("\nEspera 2 ");
+          //  printf("\nEspera 2 ");
             Enfileira(aviaoATERRISSAR, i, espera_2);
-            Imprimir(espera_2);
+          //  Imprimir(espera_2);
 
         } else if (*(p_controleAterrisagem) == 3) {
 
             *(p_controleAterrisagem) = 4;//altera a variavel auxiliar para adicionar na posicao seguinte
             //acrescenta o aviao atual a prateleira 1 da pista 2
-            printf("\nEspera 3");
+          //  printf("\nEspera 3");
             Enfileira(aviaoATERRISSAR, i, espera_3);
-            Imprimir(espera_3);
+           // Imprimir(espera_3);
 
         } else if (*(p_controleAterrisagem) == 4) {
 
             *(p_controleAterrisagem) = 1;//altera a variavel auxiliar para adicionar na posicao seguinte
             //acrescenta o aviao atual a prateleira 2 da pista 2
-            printf("\nEspera 4 ");
+            //printf("\nEspera 4 ");
             Enfileira(aviaoATERRISSAR, i, espera_4);
-            Imprimir(espera_4);
+            //Imprimir(espera_4);
 
         }
 
@@ -149,22 +149,22 @@ void esperaAterrissar(aeronave *aviaoATERRISSAR, int SORTEIO_ATERRISSAR,
 void aterrissar(Fila *PISTA, Fila *filaEspera) {
 
     //compara se o tamanho da pista 1 ta menor que a 2
-    printf("\nPISTA 1 ANTES");
+    //printf("\nPISTA 1 ANTES");
 
-    printf("\nFILA ESPERA");
-    Imprimir(filaEspera);
-    printf("\nFILA ATERRISSAR");
-    Imprimir(PISTA);
+   // printf("\nFILA ESPERA");
+ //   Imprimir(filaEspera);
+ //   printf("\nFILA ATERRISSAR");
+  //  Imprimir(PISTA);
 
     Enfileira(filaEspera->Aviao, filaEspera->Frente - 1, PISTA);
     Desenfileira(filaEspera, &filaEspera->Aviao[(filaEspera->Frente) - 1]);
 
-    printf("\nPISTA 1 DEPOIS");
+ //   printf("\nPISTA 1 DEPOIS");
 
-    printf("\nFILA ESPERA");
-    Imprimir(filaEspera);
-    printf("\nFILA ATERRISSAR");
-    Imprimir(PISTA);
+ //   printf("\nFILA ESPERA");
+ //   Imprimir(filaEspera);
+ //   printf("\nFILA ATERRISSAR");
+  //  Imprimir(PISTA);
 
 
 }
@@ -185,14 +185,6 @@ void Combustivel(Fila *espera) {
         if (espera->Aviao[i].quantidadeTempo != 0) {
             //retira uma unidade
             espera->Aviao[i].quantidadeTempo--;
-            //ele confere pra ver se o aviao tiver combustivel igual a 0 é pq ele caiu
-            if (espera->Aviao[i].quantidadeTempo == 0) {
-
-                printf("\n---------------------------------------------------"
-                       "\n                 Avião Caiu            "
-                       "\n---------------------------------------------------");
-
-            }
         }
     }
 }
@@ -214,8 +206,8 @@ void decolar(aeronave *aviaoDECOLAR, int SORTEIO_DECOLAR, Fila *fila_DECOLAR) {
         //acrescenta o aviao atual na pista 2
         Enfileira(aviaoDECOLAR, i, fila_DECOLAR);
 
-        Imprimir(fila_DECOLAR);
-        printf("\nPISTA DECOLAR 1");
+      //  Imprimir(fila_DECOLAR);
+      //  printf("\nPISTA DECOLAR 1");
 
     }
 }
