@@ -42,10 +42,10 @@ void esperaAterrissar(aeronaveAterrissar *aviaoATERRISSAR, int SORTEIO_ATERRISSA
                       FilaAterrissar *Pista_2_espera_1, FilaAterrissar *Pista_2_espera_2,
                       int *p_controleEspera);
 
-void aterrissar(FilaAterrissar *PISTA_ATERRISSAR1, FilaAterrissar *PISTA_ATERRISSAR2,
-                FilaAterrissar *FILAESPERA);
+void aterrissar(FilaAterrissar *p_ATERRISSAR1, FilaAterrissar *p_ATERRISSAR2,
+                FilaAterrissar *filaEspera);
 
-void emergencia(FilaAterrissar *PISTA_ATERRISSAR3, FilaAterrissar *FILAESPERA);
+void emergencia(FilaAterrissar *PISTA_ATERRISSAR3, FilaAterrissar *filaEspera);
 
 void decolar();
 

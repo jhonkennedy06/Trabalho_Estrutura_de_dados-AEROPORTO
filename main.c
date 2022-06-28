@@ -8,8 +8,8 @@
 int main() {
     srand((unsigned) time(NULL));
 //ID_decolagem é par e
-    int SORTEIO_DECOLAR = 0, SORTEIO_ATERRISSAR = 0, ID_decolagem = 0, *p_ID_decolagem = &ID_decolagem,
-            ID_aterrissagem = 1, *p_ID_aterrissagem = &ID_aterrissagem, QTDITERAÇOES = 0;
+    int SORTEIO_DECOLAR, SORTEIO_ATERRISSAR, ID_decolagem = 0, *p_ID_decolagem = &ID_decolagem,
+            ID_aterrissagem = 1, *p_ID_aterrissagem = &ID_aterrissagem, QTDITERAÇOES;
     int controleEspera = 1, *p_controleEspera = &controleEspera;
 
     FilaAterrissar p_ATERRISSAR1, p_ATERRISSAR2, p_ATERRISSAR3;//VARIAVEIS PARA PISTA DO AEROPORTO
@@ -53,70 +53,75 @@ int main() {
             printf("\n\nNenhum avião aterrissando\n\n");
         }
 
+        if (Pista_1_espera_1.tamanhoPista != 0 && Pista_1_espera_2.tamanhoPista && Pista_2_espera_1.tamanhoPista &&
+            Pista_2_espera_2.tamanhoPista) {
+            //parte onde iremos ver qual é o aviao nao tem reserva de combustivel
+            if ((Vazia(Pista_1_espera_1) == 0) && Pista_1_espera_1.Aviao[Pista_1_espera_1.Frente - 1].quantidadeTempo == 1) {
 
-        //parte onde iremos ver qual é o aviao nao tem reserva de combustivel
-        if (Pista_1_espera_1.Aviao[Pista_1_espera_1.Frente].quantidadeTempo == 1) {
+                emergencia(&p_ATERRISSAR3, &Pista_1_espera_1);
 
-            emergencia(&p_ATERRISSAR3, &Pista_1_espera_1);
+            } else if ((Vazia(Pista_1_espera_2) == 0) && Pista_1_espera_2.Aviao[Pista_1_espera_2.Frente - 1].quantidadeTempo == 1) {
 
-        } else if (Pista_1_espera_2.Aviao[Pista_1_espera_2.Frente].quantidadeTempo == 1) {
+                emergencia(&p_ATERRISSAR3, &Pista_1_espera_2);
 
-            emergencia(&p_ATERRISSAR3, &Pista_1_espera_2);
+            } else if ((Vazia(Pista_2_espera_1) == 0) && Pista_2_espera_1.Aviao[Pista_2_espera_1.Frente - 1].quantidadeTempo == 1) {
 
-        } else if (Pista_2_espera_1.Aviao[Pista_2_espera_1.Frente].quantidadeTempo == 1) {
-
-            emergencia(&p_ATERRISSAR3, &Pista_2_espera_1);
+                emergencia(&p_ATERRISSAR3, &Pista_2_espera_1);
 
 
-        } else if (Pista_2_espera_2.Aviao[Pista_2_espera_2.Frente].quantidadeTempo == 1) {
+            } else if ((Vazia(Pista_2_espera_2) == 0) && Pista_2_espera_2.Aviao[Pista_2_espera_2.Frente - 1].quantidadeTempo == 1) {
 
-            emergencia(&p_ATERRISSAR3, &Pista_2_espera_2);
+                emergencia(&p_ATERRISSAR3, &Pista_2_espera_2);
+
+            }else
+
+            //parte onde iremos ver qual é o aviao com menor tempo de combustivel
+            if ((Vazia(Pista_1_espera_1) == 0) &&
+                ((Pista_1_espera_1.Aviao[Pista_1_espera_1.Frente - 1].quantidadeTempo <
+                  Pista_1_espera_2.Aviao[Pista_1_espera_2.Frente - 1].quantidadeTempo) &&
+                 (Pista_1_espera_1.Aviao[Pista_1_espera_1.Frente - 1].quantidadeTempo <
+                  Pista_2_espera_1.Aviao[Pista_2_espera_1.Frente - 1].quantidadeTempo) &&
+                 (Pista_1_espera_1.Aviao[Pista_1_espera_1.Frente - 1].quantidadeTempo <
+                  Pista_2_espera_2.Aviao[Pista_2_espera_2.Frente - 1].quantidadeTempo))) {
+
+                aterrissar(&p_ATERRISSAR1, &p_ATERRISSAR2, &Pista_1_espera_1);
+
+
+            } else if ((Vazia(Pista_1_espera_2) == 0) &&
+                       ((Pista_1_espera_2.Aviao[Pista_1_espera_2.Frente - 1].quantidadeTempo <
+                         Pista_1_espera_1.Aviao[Pista_1_espera_1.Frente - 1].quantidadeTempo) &&
+                        (Pista_1_espera_2.Aviao[Pista_1_espera_2.Frente - 1].quantidadeTempo <
+                         Pista_2_espera_1.Aviao[Pista_2_espera_1.Frente - 1].quantidadeTempo) &&
+                        (Pista_1_espera_2.Aviao[Pista_1_espera_2.Frente - 1].quantidadeTempo <
+                         Pista_2_espera_2.Aviao[Pista_2_espera_2.Frente - 1].quantidadeTempo))) {
+
+                aterrissar(&p_ATERRISSAR1, &p_ATERRISSAR2, &Pista_1_espera_2);
+
+
+            } else if ((Vazia(Pista_2_espera_1) == 0) &&
+                       (Pista_2_espera_1.Aviao[Pista_2_espera_1.Frente - 1].quantidadeTempo <
+                        Pista_1_espera_1.Aviao[Pista_1_espera_1.Frente - 1].quantidadeTempo) &&
+                       (Pista_2_espera_1.Aviao[Pista_2_espera_1.Frente - 1].quantidadeTempo <
+                        Pista_1_espera_2.Aviao[Pista_1_espera_2.Frente - 1].quantidadeTempo) &&
+                       (Pista_2_espera_1.Aviao[Pista_2_espera_1.Frente - 1].quantidadeTempo <
+                        Pista_2_espera_2.Aviao[Pista_2_espera_2.Frente - 1].quantidadeTempo)) {
+
+                aterrissar(&p_ATERRISSAR1, &p_ATERRISSAR2, &Pista_2_espera_1);
+
+
+            } else if ((Vazia(Pista_2_espera_2) == 0) &&
+                       (Pista_2_espera_2.Aviao[Pista_2_espera_2.Frente - 1].quantidadeTempo <
+                        Pista_1_espera_1.Aviao[Pista_1_espera_1.Frente - 1].quantidadeTempo) &&
+                       (Pista_2_espera_2.Aviao[Pista_2_espera_2.Frente - 1].quantidadeTempo <
+                        Pista_1_espera_2.Aviao[Pista_1_espera_2.Frente - 1].quantidadeTempo) &&
+                       (Pista_2_espera_2.Aviao[Pista_2_espera_2.Frente - 1].quantidadeTempo <
+                        Pista_2_espera_1.Aviao[Pista_2_espera_1.Frente - 1].quantidadeTempo)) {
+
+                aterrissar(&p_ATERRISSAR1, &p_ATERRISSAR2, &Pista_2_espera_2);
+
+            }
 
         }
-
-        //parte onde iremos ver qual é o aviao com menor tempo de combustivel
-        if ((Pista_1_espera_1.Aviao[Pista_1_espera_1.Frente].quantidadeTempo <
-             Pista_1_espera_2.Aviao[Pista_1_espera_2.Frente].quantidadeTempo) &&
-            (Pista_1_espera_1.Aviao[Pista_1_espera_1.Frente].quantidadeTempo <
-             Pista_2_espera_1.Aviao[Pista_2_espera_1.Frente].quantidadeTempo) &&
-            (Pista_1_espera_1.Aviao[Pista_1_espera_1.Frente].quantidadeTempo <
-             Pista_2_espera_2.Aviao[Pista_2_espera_2.Frente].quantidadeTempo)) {
-
-            aterrissar(&p_ATERRISSAR1, &p_ATERRISSAR2, &Pista_1_espera_1);
-
-
-        } else if (((Pista_1_espera_2.Aviao[Pista_1_espera_2.Frente].quantidadeTempo <
-                     Pista_1_espera_1.Aviao[Pista_1_espera_1.Frente].quantidadeTempo) &&
-                    (Pista_1_espera_2.Aviao[Pista_1_espera_2.Frente].quantidadeTempo <
-                     Pista_2_espera_1.Aviao[Pista_2_espera_1.Frente].quantidadeTempo) &&
-                    (Pista_1_espera_2.Aviao[Pista_1_espera_2.Frente].quantidadeTempo <
-                     Pista_2_espera_2.Aviao[Pista_2_espera_2.Frente].quantidadeTempo))) {
-
-            aterrissar(&p_ATERRISSAR1, &p_ATERRISSAR2, &Pista_1_espera_2);
-
-
-        } else if ((Pista_2_espera_1.Aviao[Pista_2_espera_1.Frente].quantidadeTempo <
-                    Pista_1_espera_1.Aviao[Pista_1_espera_1.Frente].quantidadeTempo) &&
-                   (Pista_2_espera_1.Aviao[Pista_2_espera_1.Frente].quantidadeTempo <
-                    Pista_1_espera_2.Aviao[Pista_1_espera_2.Frente].quantidadeTempo) &&
-                   (Pista_2_espera_1.Aviao[Pista_2_espera_1.Frente].quantidadeTempo <
-                    Pista_2_espera_2.Aviao[Pista_2_espera_2.Frente].quantidadeTempo)) {
-
-            aterrissar(&p_ATERRISSAR1, &p_ATERRISSAR2, &Pista_2_espera_1);
-
-
-        } else if ((Pista_2_espera_2.Aviao[Pista_2_espera_2.Frente].quantidadeTempo <
-                    Pista_1_espera_1.Aviao[Pista_1_espera_1.Frente].quantidadeTempo) &&
-                   (Pista_2_espera_2.Aviao[Pista_2_espera_2.Frente].quantidadeTempo <
-                    Pista_1_espera_2.Aviao[Pista_1_espera_2.Frente].quantidadeTempo) &&
-                   (Pista_2_espera_2.Aviao[Pista_2_espera_2.Frente].quantidadeTempo <
-                    Pista_2_espera_1.Aviao[Pista_2_espera_1.Frente].quantidadeTempo)) {
-
-            aterrissar(&p_ATERRISSAR1, &p_ATERRISSAR2, &Pista_2_espera_2);
-
-        }
-
-
 
         //apos criar os avioes, iremos passar o vetor para a funçao e depois iremos inserir um item por vez a cada prateleira de espera
         if (SORTEIO_DECOLAR != 0) {
