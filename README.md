@@ -9,7 +9,7 @@ O objetivo do trabalho é simular os padrões de aterrissagem e decolagem em um 
 Suponha um aeroporto que possui três pistas, numeradas como 1, 2 e 3. Existem quatro “prateleiras” de espera para aterrissagem, duas para cada uma das pistas 1 e 2. Aeronaves que se aproximam do aeroporto devem integrar-se a uma das prateleiras (filas) de espera, sendo que estas filas devem procurar manter o mesmo tamanho. Assim que um avião entra em uma fila de aterrissagem, ele recebe um número de identificação ID e outro número inteiro que indica a quantidade de unidades de tempo que o avião pode permanecer na fila antes que ele tenha de descer (do contrário, seu combustível termina e ele cai).
 Existem também filas para decolagem, uma para cada pista. Os aviões que chegam nessas filas também recebem uma identificação ID. Essas filas também devem procurar manter o mesmo tamanho.
 
-## 3 Simulaão   
+## 3 Simulação   
 O controle do simulador deverá ser realizado por UT (Unidade de Tempo) sendo que, a cada unidade de tempo:
 
 • de zero a três aeronaves podem chegar nas filas de decolagem;
